@@ -11,10 +11,10 @@
         "release": "turbo run build --filter=docs^... && changeset publish"
     },
     "devDependencies": {
-        "@changesets/cli": "^2.25.2",
-        "eslint": "^8.29.0",
+        "@changesets/cli": "^2.26.2",
+        "eslint": "^8.47.0",
         "eslint-config-marshallku": "workspace:*",
-        "prettier": "^2.8.0",
+        "prettier": "^3.0.1",
         "turbo": "latest"
     },
     "packageManager": "pnpm@8.6.10"
