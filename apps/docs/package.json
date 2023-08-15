@@ -3,8 +3,8 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "dev": "start-storybook -p 6006",
-        "build": "build-storybook --docs",
+        "dev": "storybook dev -p 6006",
+        "build": "storybook build --docs",
         "preview-storybook": "serve storybook-static",
         "clean": "rm -rf .turbo && rm -rf node_modules"
     },
@@ -15,16 +15,21 @@
     },
     "devDependencies": {
         "@marshallku/tsconfig": "workspace:0.0.0",
-        "@storybook/addon-actions": "^6.5.14",
-        "@storybook/addon-docs": "^6.5.14",
-        "@storybook/addon-essentials": "^6.5.14",
-        "@storybook/addon-links": "^6.5.14",
-        "@storybook/builder-vite": "^0.1.41",
-        "@storybook/react": "^6.5.14",
-        "@vitejs/plugin-react": "^1.3.2",
+        "@storybook/addon-actions": "^7.2.3",
+        "@storybook/addon-docs": "^7.2.3",
+        "@storybook/addon-essentials": "^7.2.3",
+        "@storybook/addon-interactions": "^7.2.3",
+        "@storybook/addon-links": "^7.2.3",
+        "@storybook/blocks": "^7.2.3",
+        "@storybook/builder-vite": "^7.2.3",
+        "@storybook/react": "^7.2.3",
+        "@storybook/react-vite": "^7.2.3",
+        "@vitejs/plugin-react": "^4.0.4",
         "eslint-config-marshallku": "workspace:0.0.0",
-        "serve": "^13.0.4",
-        "typescript": "^4.9.3",
-        "vite": "^2.9.15"
+        "react-scripts": "^5.0.1",
+        "serve": "^14.2.0",
+        "storybook": "^7.2.3",
+        "typescript": "^5.1.6",
+        "vite": "^4.4.9"
     }
 }
