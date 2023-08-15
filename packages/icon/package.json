@@ -1,0 +1,19 @@
+{
+    "name": "@marshallku/icon",
+    "version": "0.0.0",
+    "sideEffects": false,
+    "license": "MIT",
+    "files": [
+        "dist/**"
+    ],
+    "scripts": {
+        "build": "fantasticon",
+        "prebuild": "mkdir -p dist"
+    },
+    "devDependencies": {
+        "fantasticon": "^2.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

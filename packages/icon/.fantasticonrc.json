@@ -1,0 +1,9 @@
+{
+    "inputDir": "./icons",
+    "outputDir": "./dist",
+    "normalize": true,
+    "fontTypes": ["svg", "woff"],
+    "assetTypes": ["css", "ts", "scss", "json"],
+    "templates": { "scss": "templates/scss.hbs" },
+    "fontsUrl": "/assets/icon"
+}
