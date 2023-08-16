@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "../../../packages/core/src/index";
+import { Button, ButtonProps } from "@core";
 import { Meta, StoryObj } from "@storybook/react";
 
 const story: Meta<ButtonProps> = {

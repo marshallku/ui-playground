@@ -37,7 +37,7 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@marshallku/tsconfig':
-        specifier: workspace:0.0.0
+        specifier: workspace:*
         version: link:../../packages/marshallku-tsconfig
       '@storybook/addon-actions':
         specifier: ^7.2.3

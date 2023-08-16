@@ -14,7 +14,7 @@
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
-        "@marshallku/tsconfig": "workspace:0.0.0",
+        "@marshallku/tsconfig": "workspace:*",
         "@storybook/addon-actions": "^7.2.3",
         "@storybook/addon-docs": "^7.2.3",
         "@storybook/addon-essentials": "^7.2.3",

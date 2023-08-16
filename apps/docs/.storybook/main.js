@@ -1,3 +1,5 @@
+import { resolve } from "path";
+
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
     stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -9,5 +11,22 @@ const config = {
     docs: {
         autodocs: "tag",
     },
+    async viteFinal(config, { configType }) {
+        return {
+            ...config,
+            resolve: {
+                alias: [
+                    {
+                        find: "@core",
+                        replacement: resolve("../../packages/core/src"),
+                    },
+                ],
+            },
+            define: {
+                "process.env": {},
+            },
+        };
+    },
 };
+
 export default config;
