@@ -117,6 +117,10 @@ importers:
         version: 5.1.6
 
   packages/core:
+    dependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
     devDependencies:
       '@marshallku/tsconfig':
         specifier: workspace:*
@@ -151,9 +155,6 @@ importers:
       postcss-modules:
         specifier: ^6.0.0
         version: 6.0.0(postcss@8.4.27)
-      react:
-        specifier: ^18.1.0
-        version: 18.2.0
       rollup:
         specifier: ^3.28.0
         version: 3.28.0

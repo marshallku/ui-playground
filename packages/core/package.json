@@ -17,7 +17,9 @@
         "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
     },
     "dependencies": {},
-    "peerDependencies": {},
+    "peerDependencies": {
+        "react": "^18.2.0"
+    },
     "devDependencies": {
         "@marshallku/tsconfig": "workspace:*",
         "@rollup/plugin-commonjs": "^25.0.4",
@@ -30,7 +32,6 @@
         "eslint-config-marshallku": "workspace:*",
         "node-sass": "^9.0.0",
         "postcss-modules": "^6.0.0",
-        "react": "^18.1.0",
         "rollup": "^3.28.0",
         "rollup-plugin-dts": "^5.3.1",
         "rollup-plugin-peer-deps-external": "^2.2.4",
