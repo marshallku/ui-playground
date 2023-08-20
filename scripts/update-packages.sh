@@ -44,5 +44,10 @@ for ((i = 0; i < ${#lines[@]}; i++)); do
     fi
 done
 
+if [[ "$cmd" == 'pnpm i ' ]]; then
+    echo 'Packages are up to date, installation step is skipped'
+    exit 0
+fi
+
 cd "$current_directory" || exit 1
 eval "$cmd --filter $package_name"
