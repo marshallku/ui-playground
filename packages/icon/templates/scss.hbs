@@ -1,6 +1,6 @@
 ${{ name }}-map: (
 {{# each codepoints}}
-    "{{ @key }}": "\\{{ codepoint this }}"
+    "{{ @key }}": "\\{{ codepoint this }}",
 {{/ each}}
 );
 
@@ -20,7 +20,9 @@ ${{ name }}-map: (
 
     {{# each codepoints }}
     &:global(.{{ ../prefix }}-{{ @key }}) {
-        content: map-get(${{ ../name }}-map, {{ @key }});
+        &:before {
+            content: map-get(${{ ../name }}-map, {{ @key }});
+        }
     }
     {{/ each}}
 }
