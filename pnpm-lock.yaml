@@ -16,7 +16,7 @@ importers:
         version: 8.47.0
       eslint-config-marshallku:
         specifier: workspace:*
-        version: link:packages/eslint-config-acme
+        version: link:packages/eslint-config-marshallku
       minify:
         specifier: ^10.3.0
         version: 10.3.0
@@ -74,7 +74,7 @@ importers:
         version: 4.0.4(vite@4.4.9)
       eslint-config-marshallku:
         specifier: workspace:0.0.0
-        version: link:../../packages/eslint-config-acme
+        version: link:../../packages/eslint-config-marshallku
       react-scripts:
         specifier: ^5.0.1
         version: 5.0.1(@babel/plugin-syntax-flow@7.22.5)(@babel/plugin-transform-react-jsx@7.22.5)(esbuild@0.18.20)(eslint@8.47.0)(react@18.2.0)(typescript@5.1.6)
@@ -151,7 +151,7 @@ importers:
         version: 8.29.0
       eslint-config-marshallku:
         specifier: workspace:*
-        version: link:../eslint-config-acme
+        version: link:../eslint-config-marshallku
       node-sass:
         specifier: ^9.0.0
         version: 9.0.0
@@ -180,7 +180,7 @@ importers:
         specifier: ^5.1.6
         version: 5.1.6
 
-  packages/eslint-config-acme:
+  packages/eslint-config-marshallku:
     dependencies:
       eslint-config-next:
         specifier: latest
@@ -222,7 +222,7 @@ importers:
         version: 8.47.0
       eslint-config-marshallku:
         specifier: workspace:*
-        version: link:../eslint-config-acme
+        version: link:../eslint-config-marshallku
       react:
         specifier: ^18.1.0
         version: 18.2.0
@@ -249,7 +249,7 @@ importers:
         version: 8.29.0
       eslint-config-marshallku:
         specifier: workspace:*
-        version: link:../eslint-config-acme
+        version: link:../eslint-config-marshallku
       react:
         specifier: ^18.1.0
         version: 18.2.0

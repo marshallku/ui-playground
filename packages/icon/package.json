@@ -10,10 +10,11 @@
     "scripts": {
         "build": "fantasticon",
         "prebuild": "mkdir -p dist",
-        "postbuild": "node scripts/postbuild.js"
+        "postbuild": "npx minify --css ./dist/icons.css && node scripts/postbuild.js"
     },
     "devDependencies": {
-        "fantasticon": "^2.0.0"
+        "fantasticon": "^2.0.0",
+        "minify": "^10.3.0"
     },
     "publishConfig": {
         "access": "public"
