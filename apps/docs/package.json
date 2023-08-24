@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "@marshallku/core": "workspace:0.0.0",
+        "@marshallku/icon": "workspace:^",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },
@@ -26,6 +27,7 @@
         "@storybook/react-vite": "^7.2.3",
         "@vitejs/plugin-react": "^4.0.4",
         "eslint-config-marshallku": "workspace:0.0.0",
+        "node-sass": "^9.0.0",
         "react-scripts": "^5.0.1",
         "serve": "^14.2.0",
         "storybook": "^7.2.3",
