@@ -16,7 +16,9 @@
         "lint": "eslint \"src/**/*.ts*\"",
         "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
     },
-    "dependencies": {},
+    "dependencies": {
+        "@marshallku/utils": "workspace:^"
+    },
     "peerDependencies": {
         "react": "^18.2.0"
     },
