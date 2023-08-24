@@ -9,12 +9,12 @@ core_dir="packages/core/src/$component_name"
 
 mkdir "$core_dir"
 printf ".%s {\n}" "$styled_name" >>"$core_dir/index.module.scss"
-echo "import { classNamesWithRoot } from '@marshallku/utils';
+echo "import { classNames } from '@marshallku/utils';
 import styles from './index.module.scss';
 
 export interface ${component_name}Props {}
 
-const cx = classNamesWithRoot(styles, '$styled_name')
+const cx = classNames(styles, '$styled_name')
 
 function $component_name({}: ${component_name}Props) {}
 
@@ -37,7 +37,7 @@ const story: Meta<${component_name}Props> = {
 
 export default story;
 
-export const StringChildren: StoryObj<${component_name}Props> = {
+export const Default: StoryObj<${component_name}Props> = {
     args: {},
 };" >>"$story_dir/$component_name.stories.tsx"
 
