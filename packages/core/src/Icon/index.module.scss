@@ -1,7 +1,8 @@
 $icons-map: (
     "error_outline": "\f101",
     "error": "\f102",
-    "warning": "\f103",
+    "new_releases": "\f103",
+    "warning": "\f104",
 );
 
 .icon {
@@ -27,6 +28,11 @@ $icons-map: (
     &:global(.icon-error) {
         &:before {
             content: map-get($icons-map, error);
+        }
+    }
+    &:global(.icon-new_releases) {
+        &:before {
+            content: map-get($icons-map, new_releases);
         }
     }
     &:global(.icon-warning) {
