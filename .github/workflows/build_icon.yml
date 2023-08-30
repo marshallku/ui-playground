@@ -44,7 +44,7 @@ jobs:
                   pnpm prettier --write packages/core/src/Icon
             - name: Check working tree
               run: |
-                  file_changed=$(bash .github/scripts/check-working-tree.sh)
+                  file_changed=$(bash .github/scripts/check_working_tree.sh)
 
                   if [ "$file_changed" == 'false' ]; then
                     exit 0
