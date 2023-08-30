@@ -1,0 +1,65 @@
+name: Update icons
+
+on:
+    push:
+        branches:
+            - master
+        paths:
+            - "packages/icon/**"
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+                  check-latest: true
+                  registry-url: https://registry.npmjs.org/
+            - name: Install pnpm
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 8
+                  run_install: false
+            - name: Get pnpm store directory
+              id: pnpm-cache
+              shell: bash
+              run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+            - uses: actions/cache@v3
+              name: Setup pnpm cache
+              with:
+                  path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-store-
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile --strict-peer-dependencies
+            - name: Build icon
+              run: pnpm build --filter @marshallku/icon
+            - name: Copy and format output files
+              run: |
+                  cp packages/icon/dist/constants.ts packages/core/src/Icon
+                  cp packages/icon/dist/icons.scss packages/core/src/Icon/index.module.scss
+                  pnpm prettier --write packages/core/src/Icon
+            - name: Check working tree
+              run: |
+                  file_changed=$(bash .github/scripts/check-working-tree.sh)
+
+                  if [ "$file_changed" == 'false' ]; then
+                    exit 0
+                  fi
+            - name: Update version of core package
+              run: |
+                  # Update version of icon
+                  cd packages/icon
+                  pnpm version minor
+
+                  # Update version in dependencies
+                  pnpm i @marshallku/icon@latest --filter @marshallku/docs
+
+                  # Commit changes
+                  cd ../..
+                  bash .github/scripts/commit.sh
+              env:
+                  MESSAGE: "Update version of @marshallku/icon"
