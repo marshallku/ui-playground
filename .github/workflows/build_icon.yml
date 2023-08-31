@@ -53,7 +53,7 @@ jobs:
               run: |
                   # Update version of icon
                   cd packages/icon
-                  pnpm version minor
+                  pnpm version patch
 
                   # Update version in dependencies
                   pnpm i @marshallku/icon@latest --filter @marshallku/docs
