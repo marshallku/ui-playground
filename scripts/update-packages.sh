@@ -22,7 +22,6 @@ current_directory="$PWD"
 
 cd "$target" || exit 1
 
-echo "$PWD"
 packages=$(pnpm outdated)
 package_name=$(sed -n 's/.*"name": "\(.*\)",/\1/p' package.json)
 IFS=$'\n'
