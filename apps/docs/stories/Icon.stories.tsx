@@ -1,6 +1,6 @@
 import { Icon, IconProps } from "@core";
 import { Meta, StoryFn } from "@storybook/react";
-import icons from "@marshallku/icon/dist/constants";
+import icons from "@icon/constants";
 
 const story: Meta<IconProps> = {
     component: Icon,
