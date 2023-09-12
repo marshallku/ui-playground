@@ -1,43 +1,4 @@
-$icons-map: (
-    "error_outline": "\f101",
-    "error": "\f102",
-    "new_releases": "\f103",
-    "warning": "\f104",
-);
-
 .icon {
-    $self: &;
+    display: inline-block;
     line-height: 0;
-
-    &::before {
-        font-family: icons !important;
-        font-style: normal;
-        font-weight: normal !important;
-        font-variant: normal;
-        text-transform: none;
-        line-height: 1;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    &:global(.icon-error_outline) {
-        &:before {
-            content: map-get($icons-map, error_outline);
-        }
-    }
-    &:global(.icon-error) {
-        &:before {
-            content: map-get($icons-map, error);
-        }
-    }
-    &:global(.icon-new_releases) {
-        &:before {
-            content: map-get($icons-map, new_releases);
-        }
-    }
-    &:global(.icon-warning) {
-        &:before {
-            content: map-get($icons-map, warning);
-        }
-    }
 }
