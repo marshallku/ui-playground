@@ -40,7 +40,6 @@ jobs:
             - name: Copy and format output files
               run: |
                   cp packages/icon/dist/constants.ts packages/core/src/Icon
-                  cp packages/icon/dist/icons.scss packages/core/src/Icon/index.module.scss
                   pnpm prettier --write packages/core/src/Icon
             - name: Check working tree
               run: |
