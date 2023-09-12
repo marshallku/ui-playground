@@ -1,1 +1,1 @@
-import "@marshallku/icon/dist/icons.css";
+import "@icon/icons.css";

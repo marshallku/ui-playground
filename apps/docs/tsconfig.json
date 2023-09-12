@@ -4,7 +4,8 @@
     "exclude": ["dist", "build", "node_modules"],
     "compilerOptions": {
         "paths": {
-            "@core": ["../../packages/core/src"]
+            "@core": ["../../packages/core/src"],
+            "@icon/*": ["../../packages/icon/dist/*"]
         }
     }
 }
