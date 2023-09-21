@@ -30,7 +30,7 @@ importers:
   apps/docs:
     dependencies:
       '@marshallku/core':
-        specifier: workspace:0.0.0
+        specifier: workspace:*
         version: link:../../packages/core
       '@marshallku/icon':
         specifier: workspace:^
@@ -75,9 +75,6 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.0.4
         version: 4.0.4(vite@4.4.9)
-      eslint-config-marshallku:
-        specifier: workspace:0.0.0
-        version: link:../../packages/eslint-config-marshallku
       node-sass:
         specifier: ^9.0.0
         version: 9.0.0

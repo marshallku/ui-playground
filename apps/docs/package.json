@@ -9,7 +9,7 @@
         "clean": "rm -rf .turbo && rm -rf node_modules"
     },
     "dependencies": {
-        "@marshallku/core": "workspace:0.0.1",
+        "@marshallku/core": "workspace:*",
         "@marshallku/icon": "workspace:^",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
@@ -26,7 +26,6 @@
         "@storybook/react": "^7.3.2",
         "@storybook/react-vite": "^7.3.2",
         "@vitejs/plugin-react": "^4.0.4",
-        "eslint-config-marshallku": "workspace:0.0.1",
         "node-sass": "^9.0.0",
         "react-scripts": "^5.0.1",
         "serve": "^14.2.1",
