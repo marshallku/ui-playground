@@ -1,0 +1,13 @@
+#!/bin/bash
+commit_msg=$(cat "$1")
+prefixes=("Fix" "Add" "Remove" "Use" "Refactor" "Simplify" "Modify" "Update" "Improve" "Make" "Allow" "Implement" "Prevent" "Avoid" "Move" "Rename" "Set" "Pass")
+
+for prefix in "${prefixes[@]}"; do
+    if [[ $commit_msg == $prefix* ]]; then
+        exit 0
+    fi
+done
+
+echo "ERROR: Commit message must start with one of these prefixes:"
+echo "${prefixes[*]}"
+exit 5
