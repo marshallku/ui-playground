@@ -94,6 +94,21 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9
 
+  apps/gallery-blog:
+    devDependencies:
+      '@marshallku/tsconfig':
+        specifier: workspace:^
+        version: link:../../packages/marshallku-tsconfig
+      eslint-config-marshallku:
+        specifier: workspace:^
+        version: link:../../packages/eslint-config-marshallku
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+      vite:
+        specifier: ^4.4.9
+        version: 4.4.9
+
   apps/next:
     dependencies:
       next:
