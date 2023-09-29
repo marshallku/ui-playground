@@ -5,11 +5,8 @@ const POST_PATH = "posts";
 
 /**
  * Get metadata and content from given markdown string
- *
- * @param {string} fileName
- * @param {string} fileContent
  */
-const parseContentAndMetadata = (fileName, fileContent) => {
+const parseContentAndMetadata = (fileName: string, fileContent: string) => {
     const [, metaDataContent, rawContent] = fileContent.split("---");
 
     if (!metaDataContent) {
@@ -31,7 +28,7 @@ const parseContentAndMetadata = (fileName, fileContent) => {
     };
 };
 
-const parseMarkdown = (fileName) => {
+const parseMarkdown = (fileName: string) => {
     const content = readFileSync(resolve(POST_PATH, fileName), "utf8");
 
     return {
