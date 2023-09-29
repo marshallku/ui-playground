@@ -40,6 +40,21 @@ const parseMarkdown = (fileName) => {
     };
 };
 
-const files = readdirSync(resolve(POST_PATH)).map(parseMarkdown);
+const files = readdirSync(resolve(POST_PATH))
+    .map(parseMarkdown)
+    .sort((a, b) => {
+        const aDate = new Date(a.metaData.date).getTime();
+        const bDate = new Date(b.metaData.date).getTime();
+
+        if (aDate < bDate) {
+            return 1;
+        }
+
+        if (bDate < aDate) {
+            return -1;
+        }
+
+        return 0;
+    });
 
 console.log(files);
