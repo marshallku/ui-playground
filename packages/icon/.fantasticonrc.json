@@ -3,6 +3,6 @@
     "outputDir": "./dist",
     "normalize": true,
     "fontTypes": ["svg", "woff"],
-    "assetTypes": ["css", "ts", "scss", "json"],
-    "templates": { "scss": "templates/scss.hbs" }
+    "assetTypes": ["css", "ts", "json"],
+    "templates": { "css": "templates/css.hbs" }
 }
