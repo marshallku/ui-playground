@@ -9,15 +9,15 @@
         "lint": "next lint"
     },
     "dependencies": {
-        "next": "^13.4.16",
+        "next": "^13.5.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
         "@marshallku/tsconfig": "workspace:^",
-        "@types/node": "^20.5.0",
-        "@types/react": "^18.0.9",
-        "@types/react-dom": "^18.0.4",
-        "typescript": "^5.1.6"
+        "@types/node": "^20.8.2",
+        "@types/react": "^18.2.25",
+        "@types/react-dom": "^18.2.10",
+        "typescript": "^5.2.2"
     }
 }
