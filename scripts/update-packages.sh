@@ -35,3 +35,8 @@ fi
 
 cd "$current_directory" || exit 1
 eval "$cmd --filter $package_name"
+
+if confirm "Commit changes?"; then
+    git add "$target/package.json" pnpm-lock.yaml
+    git commit -m 'Update packages'
+fi
