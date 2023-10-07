@@ -27,7 +27,6 @@
         "@storybook/react-vite": "^7.3.2",
         "@vitejs/plugin-react": "^4.0.4",
         "node-sass": "^9.0.0",
-        "react-scripts": "^5.0.1",
         "serve": "^14.2.1",
         "storybook": "^7.3.2",
         "typescript": "^5.2.2",
