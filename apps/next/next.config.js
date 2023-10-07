@@ -1,4 +1,13 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
+const path = require("path");
 
-module.exports = nextConfig
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    reactStrictMode: true,
+    transpilePackages: ["@marshallku/core"],
+    output: "standalone",
+    experimental: {
+        outputFileTracingRoot: path.join(__dirname, "../../"),
+    },
+};
+
+module.exports = nextConfig;
