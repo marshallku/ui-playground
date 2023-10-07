@@ -1,26 +1,17 @@
 {
-  "extends": "@marshallku/tsconfig/react-library.json",
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "dist",
-    "build",
-    "node_modules"
-  ],
-  "compilerOptions": {
-    "allowJs": true,
-    "noEmit": true,
-    "incremental": true,
-    "resolveJsonModule": true,
-    "jsx": "preserve",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
-  }
+    "extends": "@marshallku/tsconfig/react-library.json",
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+    "exclude": ["dist", "build", "node_modules"],
+    "compilerOptions": {
+        "allowJs": true,
+        "noEmit": true,
+        "incremental": true,
+        "resolveJsonModule": true,
+        "jsx": "preserve",
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ]
+    }
 }
