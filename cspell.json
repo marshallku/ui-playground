@@ -1,0 +1,13 @@
+{
+    "ignorePaths": [
+        "pnpm-lock.yaml",
+        "package.json",
+        "node_modules/**",
+        "**/node_modules/**",
+        ".git/**",
+        "**/dist/**",
+        "**/.next/**",
+        "**/storybook-static/**",
+        "**/.turbo/**"
+    ]
+}
