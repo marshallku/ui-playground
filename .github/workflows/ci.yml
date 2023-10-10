@@ -4,6 +4,9 @@ on:
     - push
     - pull_request
 
+env:
+    CI: true
+
 jobs:
     check-spelling:
         name: Check spelling
@@ -16,3 +19,18 @@ jobs:
                   check-latest: true
                   registry-url: https://registry.npmjs.org/
             - run: npx cspell --no-progress '**/*'
+    check-types:
+        name: Check types
+        runs-on: ubuntu-latest
+        if: github.event_name == 'pull_request'
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+                  check-latest: true
+                  registry-url: https://registry.npmjs.org/
+            - run: bash .github/scripts/check_type.sh
+              env:
+                  BASE: ${{ github.base_ref }}
+                  HEAD: ${{ github.head_ref }}
