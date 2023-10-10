@@ -52,8 +52,8 @@ const options = [
                     [
                         "sass",
                         {
-                            data: '@import "styles/abstracts/_font.sass";',
-                            includePaths: [resolve("./src/styles")],
+                            data: '@import "styles/abstracts/_font.scss";',
+                            includePaths: [resolve("./src")],
                         },
                     ],
                 ],
