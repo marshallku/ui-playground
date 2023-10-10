@@ -131,7 +131,7 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 
 # Button
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur tempor, nisl nunc egestas nisi, euismod aliquam nisl nunc euismod.
+Lorem ipsum dolor sit
 
 ## Props
 

@@ -1,7 +1,23 @@
 {
+    "words": [
+        "BUILDKIT",
+        "callout",
+        "codebases",
+        "codepoint",
+        "codepoints",
+        "marshallku",
+        "nextjs",
+        "preconfigured",
+        "preconfigures",
+        "treeshake",
+        "tsup",
+        "Turborepo",
+        "vercel"
+    ],
     "ignorePaths": [
         "pnpm-lock.yaml",
         "package.json",
+        "Dockerfile",
         "node_modules/**",
         "**/node_modules/**",
         ".git/**",
