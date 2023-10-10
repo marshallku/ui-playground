@@ -130,6 +130,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.10
         version: 18.2.10
+      eslint-config-marshallku:
+        specifier: workspace:*
+        version: link:../../packages/eslint-config-marshallku
       typescript:
         specifier: ^5.2.2
         version: 5.2.2

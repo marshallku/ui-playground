@@ -18,6 +18,7 @@
         "@types/node": "^20.8.2",
         "@types/react": "^18.2.25",
         "@types/react-dom": "^18.2.10",
+        "eslint-config-marshallku": "workspace:*",
         "typescript": "^5.2.2"
     }
 }
