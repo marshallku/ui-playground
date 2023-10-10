@@ -14,7 +14,7 @@
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
-        "@marshallku/tsconfig": "workspace:^",
+        "@marshallku/tsconfig": "workspace:*",
         "@types/node": "^20.8.2",
         "@types/react": "^18.2.25",
         "@types/react-dom": "^18.2.10",
