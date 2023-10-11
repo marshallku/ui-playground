@@ -1,0 +1,9 @@
+{
+    "root": true,
+    "extends": ["marshallku"],
+    "settings": {
+        "next": {
+            "rootDir": ["apps/*/"]
+        }
+    }
+}
