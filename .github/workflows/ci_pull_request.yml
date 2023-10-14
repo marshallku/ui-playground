@@ -17,7 +17,55 @@ jobs:
                   node-version: 18
                   check-latest: true
                   registry-url: https://registry.npmjs.org/
+            - name: Install pnpm
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 8
+                  run_install: false
+            - name: Get pnpm store directory
+              id: pnpm-cache
+              shell: bash
+              run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+            - uses: actions/cache@v3
+              name: Setup pnpm cache
+              with:
+                  path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-store-
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile --strict-peer-dependencies
             - run: bash .github/scripts/check_type.sh
               env:
                   BASE: ${{ github.base_ref }}
                   HEAD: ${{ github.head_ref }}
+    lint:
+        name: Check quality with ESLint
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+                  check-latest: true
+                  registry-url: https://registry.npmjs.org/
+            - name: Install pnpm
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 8
+                  run_install: false
+            - name: Get pnpm store directory
+              id: pnpm-cache
+              shell: bash
+              run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+            - uses: actions/cache@v3
+              name: Setup pnpm cache
+              with:
+                  path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-store-
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile --strict-peer-dependencies
+            - name: Check code quality
+              run: pnpm eslint $(git diff --name-only --diff-filter=duxb origin/${{ github.base_ref }} origin/${{ github.head_ref }} | grep -E '\\.((j|t)sx?)$' | xargs)
