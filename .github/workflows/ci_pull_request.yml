@@ -1,7 +1,7 @@
 name: CI / Pull request
 
 on:
-    - push
+    - pull_request
 
 env:
     CI: true
