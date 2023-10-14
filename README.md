@@ -1,116 +1,98 @@
-# Turborepo Design System Starter
+# UI Playground
 
-This guide explains how to use a React design system starter powered by:
-
--   🏎 [Turborepo](https://turbo.build/repo) — High-performance build system for Monorepos
--   🚀 [React](https://reactjs.org/) — JavaScript library for user interfaces
--   🛠 [Tsup](https://github.com/egoist/tsup) — TypeScript bundler powered by esbuild
--   📖 [Storybook](https://storybook.js.org/) — UI component environment powered by Vite
-
-As well as a few others tools preconfigured:
-
--   [TypeScript](https://www.typescriptlang.org/) for static type checking
--   [ESLint](https://eslint.org/) for code linting
--   [Prettier](https://prettier.io) for code formatting
--   [Changesets](https://github.com/changesets/changesets) for managing versioning and changelogs
--   [GitHub Actions](https://github.com/changesets/action) for fully automated package publishing
-
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest -e design-system
-```
-
-### Useful Commands
-
--   `pnpm build` - Build all packages, including the Storybook site
--   `pnpm dev` - Run all packages locally and preview with Storybook
--   `pnpm lint` - Lint all packages
--   `pnpm changeset` - Generate a changeset
--   `pnpm clean` - Clean up all `node_modules` and `dist` folders (runs each package's clean script)
-
-## Turborepo
-
-[Turborepo](https://turbo.build/repo) is a high-performance build system for JavaScript and TypeScript codebases. It was designed after the workflows used by massive software engineering organizations to ship code at scale. Turborepo abstracts the complex configuration needed for monorepos and provides fast, incremental builds with zero-configuration remote caching.
-
-Using Turborepo simplifies managing your design system monorepo, as you can have a single lint, build, test, and release process for all packages. [Learn more](https://vercel.com/blog/monorepos-are-changing-how-teams-build-software) about how monorepos improve your development workflow.
+A playground monorepo for building Front-end applications with turbo
 
 ## Apps & Packages
 
 This Turborepo includes the following packages and applications:
 
--   `apps/docs`: Component documentation site with Storybook
--   `packages/@marshallku/core`: Core React components
--   `packages/@marshallku/utils`: Shared React utilities
--   `packages/@marshallku/tsconfig`: Shared `tsconfig.json`s used throughout the Turborepo
--   `packages/eslint-config-marshallku`: ESLint preset
+-   applications
+    -   `docs`: Documentation of components with Storybook
+    -   `gallery-blog`: Application for testing micro frontend for my gallery blog
+    -   `next`: Sample nextjs application
+-   packages
+    -   `core`: React UI library
+    -   `eslint-config-marshallku`: ESLint config for JavaScript projects
+    -   `icon`: Icon font generator
+    -   `marshallku-tsconfig`: tsconfig for TypeScript projects
+    -   `toast`: Utility for displaying toast message simply
+    -   `utils`: Utility functions
 
-Each package and app is 100% [TypeScript](https://www.typescriptlang.org/). Workspaces enables us to "hoist" dependencies that are shared between packages to the root `package.json`. This means smaller `node_modules` folders and a better local dev experience. To install a dependency for the entire monorepo, use the `-w` workspaces flag with `pnpm add`.
+Each package and app uses [TypeScript](https://www.typescriptlang.org/).
 
-This example sets up your `.gitignore` to exclude all generated files, other folders like `node_modules` used to store your dependencies.
-
-### Compilation
-
-To make the core library code work across all browsers, we need to compile the raw TypeScript and React code to plain JavaScript. We can accomplish this with `tsup`, which uses `esbuild` to greatly improve performance.
-
-Running `pnpm build` from the root of the Turborepo will run the `build` command defined in each package's `package.json` file. Turborepo runs each `build` in parallel and caches & hashes the output to speed up future builds.
-
-For `marshallku-core`, the `build` command is the following:
+### Running commands
 
 ```bash
-tsup src/index.tsx --format esm,cjs --dts --external react
+# Run build in @marshallku/core
+pnpm build --filter=@marshallku/core
+
+# Run build in packages that doesn't end with docs
+pnpm build --filter=docs^...
 ```
 
-`tsup` compiles `src/index.tsx`, which exports all of the components in the design system, into both ES Modules and CommonJS formats as well as their TypeScript types. The `package.json` for `marshallku-core` then instructs the consumer to select the correct format:
+Use `--filter` option to run commands in specific package
 
-```json:marshallku-core/package.json
-{
-  "name": "@marshallku/core",
-  "version": "0.0.0",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "sideEffects": false,
-}
-```
-
-Run `pnpm build` to confirm compilation is working correctly. You should see a folder `marshallku-core/dist` which contains the compiled output.
+#### Adding dependencies
 
 ```bash
-marshallku-core
-└── dist
-    ├── index.d.ts  <-- Types
-    ├── index.js    <-- CommonJS version
-    └── index.mjs   <-- ES Modules version
+pnpm add $PACKAGE_NAME --filter=$PACKAGE_OR_APPLICATION_NAME
 ```
+
+For adding dependency in specific package or application, use `--filter` option.
+
+```bash
+pnpm add $PACKAGE_NAME -w
+```
+
+For adding dependency for whole workspace, use `-w` option.
+
+### Docker
+
+```bash
+# Create a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
+docker network create app_network
+
+# Build prod using new BuildKit engine
+COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.yml build
+
+# Start prod in detached mode
+docker-compose -f docker-compose.yml up -d
+```
+
+You can also build project with docker.
+
+#### Adding new application
+
+For adding new application, follow below steps.
+
+1. Add `Dockerfile` in root of application
+1. Add new application in `docker-compose.yml` in workspace root
 
 ## Components
 
 Each file inside of `marshallku-core/src` is a component inside our design system. For example:
 
-```tsx:marshallku-core/src/Button.tsx
-import * as React from 'react';
-
+```tsx
 export interface ButtonProps {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }
 
-export function Button(props: ButtonProps) {
-  return <button>{props.children}</button>;
+function Button({ children }: ButtonProps) {
+    return <button type="button">{children}</button>;
 }
 
-Button.displayName = 'Button';
+export default Button;
 ```
 
-When adding a new file, ensure the component is also exported from the entry `index.tsx` file:
+### Adding a new component
 
-```tsx:marshallku-core/src/index.tsx
-import * as React from "react";
-export { Button, type ButtonProps } from "./Button";
-// Add new component exports here
-```
+When adding a new file, instead of adding new files manually, you can run `pnpm create-core` to generate new files.
+
+-   packages/core/$COMPONENT_NAME/index.tsx
+-   packages/core/$COMPONENT_NAME/index.module.scss
+
+-   packages/core/index.ts
 
 ## Storybook
 
@@ -152,6 +134,10 @@ This example includes a few helpful Storybook scripts:
 -   `pnpm build`: Builds the Storybook UI and generates the static HTML files
 -   `pnpm preview-storybook`: Starts a local server to view the generated Storybook UI
 
+## Icon font
+
+Generates icon font with `woff`, and `svg`.
+
 ## Versioning & Publishing Packages
 
 This example uses [Changesets](https://github.com/changesets/changesets) to manage versions, create changelogs, and publish to npm. It's preconfigured so you can start publishing packages immediately.
@@ -182,11 +168,3 @@ Turborepo runs the `build` script for all publishable packages (excluding docs) 
 -   Rename folders in `packages/*` to replace `marshallku` with your desired scope
 -   Search and replace `marshallku` with your desired scope
 -   Re-run `pnpm install`
-
-To publish packages to a private npm organization scope, **remove** the following from each of the `package.json`'s
-
-```diff
-- "publishConfig": {
--  "access": "public"
-- },
-```
