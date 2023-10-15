@@ -6,17 +6,17 @@ A playground monorepo for building Front-end applications with turbo
 
 This Turborepo includes the following packages and applications:
 
--   applications
-    -   `docs`: Documentation of components with Storybook
-    -   `gallery-blog`: Application for testing micro frontend for my gallery blog
-    -   `next`: Sample nextjs application
--   packages
-    -   `core`: React UI library
-    -   `eslint-config-marshallku`: ESLint config for JavaScript projects
-    -   `icon`: Icon font generator
-    -   `marshallku-tsconfig`: tsconfig for TypeScript projects
-    -   `toast`: Utility for displaying toast message simply
-    -   `utils`: Utility functions
+- applications
+  - `docs`: Documentation of components with Storybook
+  - `gallery-blog`: Application for testing micro frontend for my gallery blog
+  - `next`: Sample nextjs application
+- packages
+  - `core`: React UI library
+  - `eslint-config-marshallku`: ESLint config for JavaScript projects
+  - `icon`: Icon font generator
+  - `marshallku-tsconfig`: tsconfig for TypeScript projects
+  - `toast`: Utility for displaying toast message simply
+  - `utils`: Utility functions
 
 Each package and app uses [TypeScript](https://www.typescriptlang.org/).
 
@@ -89,19 +89,19 @@ export default Button;
 
 When adding a new file, instead of adding new files manually, you can run `pnpm create-core` to generate new files.
 
--   packages/core/$COMPONENT_NAME/index.tsx
--   packages/core/$COMPONENT_NAME/index.module.scss
+- packages/core/$COMPONENT_NAME/index.tsx
+- packages/core/$COMPONENT_NAME/index.module.scss
 
--   packages/core/index.ts
+- packages/core/index.ts
 
 ## Storybook
 
 Storybook provides us with an interactive UI playground for our components. This allows us to preview our components in the browser and instantly see changes when developing locally. This example preconfigures Storybook to:
 
--   Use Vite to bundle stories instantly (in milliseconds)
--   Automatically find any stories inside the `stories/` folder
--   Support using module path aliases like `@marshallku-core` for imports
--   Write MDX for component documentation pages
+- Use Vite to bundle stories instantly (in milliseconds)
+- Automatically find any stories inside the `stories/` folder
+- Support using module path aliases like `@marshallku-core` for imports
+- Write MDX for component documentation pages
 
 For example, here's the included Story for our `Button` component:
 
@@ -130,9 +130,9 @@ Lorem ipsum dolor sit
 
 This example includes a few helpful Storybook scripts:
 
--   `pnpm dev`: Starts Storybook in dev mode with hot reloading at `localhost:6006`
--   `pnpm build`: Builds the Storybook UI and generates the static HTML files
--   `pnpm preview-storybook`: Starts a local server to view the generated Storybook UI
+- `pnpm dev`: Starts Storybook in dev mode with hot reloading at `localhost:6006`
+- `pnpm build`: Builds the Storybook UI and generates the static HTML files
+- `pnpm preview-storybook`: Starts a local server to view the generated Storybook UI
 
 ## Icon font
 
@@ -165,6 +165,6 @@ turbo run build --filter=docs^... && changeset publish
 
 Turborepo runs the `build` script for all publishable packages (excluding docs) and publishes the packages to npm. By default, this example includes `marshallku` as the npm organization. To change this, do the following:
 
--   Rename folders in `packages/*` to replace `marshallku` with your desired scope
--   Search and replace `marshallku` with your desired scope
--   Re-run `pnpm install`
+- Rename folders in `packages/*` to replace `marshallku` with your desired scope
+- Search and replace `marshallku` with your desired scope
+- Re-run `pnpm install`
