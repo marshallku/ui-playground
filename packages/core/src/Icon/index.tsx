@@ -13,8 +13,6 @@ export interface IconProps {
 
 const cx = classNames(styles, "icon");
 
-console.log("styles", styles);
-
 function Icon({ name, size: fontSize, className }: IconProps) {
     return <i className={cx("", `-${name}`, { className })} style={{ fontSize }} />;
 }
