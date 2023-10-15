@@ -1,8 +1,9 @@
-type Function<T extends any[]> = (...args: T) => any;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+type Callback<T extends any[]> = (...args: T) => any;
 
 const DEFAULT_WAIT = 500;
 
-export function fit<T extends any[]>(func: Function<T>) {
+export function fit<T extends any[]>(func: Callback<T>) {
     let ticking = false;
 
     return (...args: T) => {
@@ -16,7 +17,7 @@ export function fit<T extends any[]>(func: Function<T>) {
     };
 }
 
-export function throttle<T extends any[]>(func: Function<T>, wait = DEFAULT_WAIT) {
+export function throttle<T extends any[]>(func: Callback<T>, wait = DEFAULT_WAIT) {
     let timer: ReturnType<typeof setTimeout> | null = null;
 
     return (...args: T) => {
@@ -29,7 +30,7 @@ export function throttle<T extends any[]>(func: Function<T>, wait = DEFAULT_WAIT
     };
 }
 
-export function debounce<T extends any[]>(func: Function<T>, wait = DEFAULT_WAIT) {
+export function debounce<T extends any[]>(func: Callback<T>, wait = DEFAULT_WAIT) {
     let timer: ReturnType<typeof setTimeout>;
 
     return (...args: T) => {
