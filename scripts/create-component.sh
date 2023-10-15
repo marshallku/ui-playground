@@ -10,27 +10,27 @@ core_dir="packages/core/src/$component_name"
 
 mkdir "$core_dir"
 printf ".%s {\n}" "$styled_name" >>"$core_dir/index.module.scss"
-echo "import { classNames } from '@marshallku/utils';
-import styles from './index.module.scss';
+echo "import { classNames } from \"@marshallku/utils\";
+import styles from \"./index.module.scss\";
 
 export interface ${component_name}Props {}
 
-const cx = classNames(styles, '$styled_name')
+const cx = classNames(styles, \"$styled_name\");
 
 function $component_name({}: ${component_name}Props) {}
 
-export default $component_name
+export default $component_name;
 " >>"$core_dir/index.tsx"
-echo "import { $component_name, ${component_name}Props } from '@core';
-import { Meta, StoryObj } from '@storybook/react';
+echo "import { $component_name, ${component_name}Props } from \"@core\";
+import { Meta, StoryObj } from \"@storybook/react\";
 
 const story: Meta<${component_name}Props> = {
     component: $component_name,
-    title: 'Components/$component_name',
+    title: \"Components/$component_name\",
     parameters: {
         docs: {
             description: {
-                component: 'ADD_YOUR_DESCRIPTION',
+                component: \"ADD_YOUR_DESCRIPTION\",
             },
         },
     },
@@ -55,9 +55,9 @@ for file in packages/core/src/*; do
     fi
 done
 
-regex="export \* from './$next_component';"
-export_all="export * from './$component_name';"
-export_default="export { default as $component_name } from './$component_name';"
+regex="export \* from \"./$next_component\";"
+export_all="export * from \"./$component_name\";"
+export_default="export { default as $component_name } from \"./$component_name\";"
 barrel_file='packages/core/src/index.ts'
 
 if grep -q "$regex" "$barrel_file"; then
