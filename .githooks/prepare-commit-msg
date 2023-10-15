@@ -1,4 +1,5 @@
 #!/bin/bash
+
 commit_msg=$(cat "$1")
 prefixes=("Fix" "Add" "Remove" "Use" "Refactor" "Simplify" "Modify" "Update" "Improve" "Make" "Allow" "Implement" "Prevent" "Avoid" "Move" "Rename" "Set" "Pass")
 

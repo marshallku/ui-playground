@@ -1,4 +1,5 @@
 #!/bin/bash
+
 if [[ -z $(git status --porcelain) ]]; then
     exit 0
 fi

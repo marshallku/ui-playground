@@ -1,4 +1,5 @@
 #!/bin/bash
+
 . scripts/utils/confirm.sh
 
 folders=$(ls -d -- apps/* packages/*)

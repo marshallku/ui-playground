@@ -1,4 +1,5 @@
 #!/bin/bash
+
 read -rp 'Name of component: ' name
 # Capitalize first letter
 component_name="$(tr '[:lower:]' '[:upper:]' <<<"${name:0:1}")${name:1}"
