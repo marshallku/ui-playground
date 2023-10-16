@@ -35,15 +35,15 @@ export default function classNames(styles: Record<string, string> = {}, rootClas
 
             if (nameType === "object") {
                 // It's not null and array, so it must be an object.
-                for (const key in name as object) {
+                for (const key in name as Record<string, unknown>) {
                     const keyWithRoot = rootClassName + key;
 
-                    if (key === "className" && name[key as keyof typeof name]) {
-                        classes.push(name[key as keyof typeof name]);
+                    if (key === "className" && (name as Record<string, unknown>)[key]) {
+                        classes.push((name as Record<string, unknown>)[key]);
                         continue;
                     }
 
-                    if (hasOwn.call(name, keyWithRoot) && name[keyWithRoot as keyof typeof name]) {
+                    if (hasOwn.call(name, keyWithRoot) && (name as Record<string, unknown>)[keyWithRoot]) {
                         classes.push(styles[keyWithRoot] || keyWithRoot);
                     }
                 }
