@@ -1,0 +1,98 @@
+$light-palette: (
+    background: #fff,
+    text: #080808,
+
+    main: (
+        50: #fce4ec,
+        100: #f8bbd0,
+        200: #f48fb1,
+        300: #f06292,
+        400: #ec407a,
+        500: #e91e63,
+        600: #d81b60,
+        700: #c2185b,
+        800: #ad1457,
+        900: #880e4f,
+    ),
+);
+
+$dark-palette: (
+    background: #121212,
+    text: #bbb,
+
+    main: (
+        50: #f3e5f5,
+        100: #e1bee7,
+        200: #ce93d8,
+        300: #ba68c8,
+        400: #ab47bc,
+        500: #9c27b0,
+        600: #8e24aa,
+        700: #7b1fa2,
+        800: #6a1b9a,
+        900: #4a148c,
+    ),
+);
+
+@function get-color($key, $sub-key: null) {
+    @if map-has-key($palettes, $key) {
+        $color: map-get($palettes, $key);
+
+        @if type-of($color) == "map" {
+            @if map-has-key($color, $sub-key) {
+                $tone: map-get($color, $sub-key);
+                @return $tone;
+            }
+
+            @warn "`#{$sub-key}` doesn't exist in color";
+        }
+
+        @return $color;
+    }
+
+    @warn "`#{$color}` doesn't exist in palette";
+    @return null;
+}
+
+@function get-key($key, $sub-key: null) {
+    @if map-has-key($palettes, $key) {
+        $color: map-get($palettes, $key);
+
+        @if type-of($color) == "map" {
+            @if map-has-key($color, $sub-key) {
+                @return var(--bsm-#{$key}-#{$sub-key});
+            }
+
+            @warn "`#{$sub-key}` doesn't exist in color";
+        }
+
+        @return var(--bsm-#{$key});
+    }
+
+    @warn "`#{$color}` doesn't exist in palette";
+    @return null;
+}
+
+html {
+    @each $key, $value in $light-palette {
+        @if type-of($value) == "map" {
+            @each $child-key, $child-value in $value {
+                --palette-#{"" + $key}-#{"" + $child-key}: #{$child-value};
+            }
+        } @else {
+            --palette-#{"" + $key}: #{$value};
+        }
+    }
+}
+
+html.dark {
+    @each $key, $value in $dark-palette {
+        @if type-of($value) == "map" {
+            @each $child-key, $child-value in $value {
+                --palette-#{"" + $key}-#{"" + $child-key}: #{$child-value};
+            }
+        } @else {
+            --palette-#{"" + $key}: #{$value};
+        }
+    }
+}

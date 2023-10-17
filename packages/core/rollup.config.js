@@ -52,7 +52,7 @@ const options = [
                     [
                         "sass",
                         {
-                            data: '@import "styles/abstracts/_font.scss";',
+                            data: '@import "styles/abstracts/_font.scss";@import "theme/palette.scss";',
                             includePaths: [resolve("./src")],
                         },
                     ],
