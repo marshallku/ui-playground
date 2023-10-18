@@ -1,0 +1,80 @@
+.theme-switch {
+    $self: &;
+
+    &__icon {
+        max-width: 100%;
+    }
+
+    circle,
+    path {
+        fill: #f2c94c;
+        transform-origin: center center;
+        transition:
+            fill 0.25s ease-in-out,
+            transform 0.25s ease-in-out,
+            opacity 0.25s ease-in-out;
+    }
+
+    &--dark {
+        #{$self}__sun {
+            fill: #515255;
+        }
+
+        #{$self}__rays > circle {
+            fill: #25282f;
+        }
+    }
+
+    &:not(&--light) {
+        #{$self}__rays {
+            > circle:first-child {
+                transform: translate(4px, -2px);
+            }
+
+            > circle:nth-child(2) {
+                transform: translate(0) scale(0.5);
+            }
+
+            > circle:nth-child(3) {
+                transform: translate(-3px, 1px) scale(0.8);
+            }
+
+            > circle:nth-child(4) {
+                transform: translateY(5.5px) scale(1.1);
+            }
+
+            > circle:nth-child(5) {
+                transform: translate(-0.8px, -1.7px) scale(0.3);
+            }
+
+            > circle:nth-child(6) {
+                transform: translate(-9.9px, 9.4px) scale(1.5);
+            }
+
+            > circle:nth-child(7) {
+                transform: translate(-1px) scale(0.6);
+            }
+
+            > circle:nth-child(8) {
+                transform: translate(3.8px, -4.4px) scale(1.2);
+            }
+        }
+    }
+
+    &:not(&--dark) {
+        #{$self}__moon {
+            opacity: 0;
+        }
+    }
+
+    &__ray {
+        filter: blur(2px);
+        opacity: 0;
+
+        @at-root {
+            #{$self}:not(#{$self}--dark) & {
+                opacity: 1;
+            }
+        }
+    }
+}
