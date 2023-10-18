@@ -18,7 +18,8 @@
         "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
     },
     "dependencies": {
-        "@marshallku/utils": "workspace:^"
+        "@marshallku/utils": "workspace:^",
+        "next-themes": "^0.2.1"
     },
     "peerDependencies": {
         "react": "^18.2.0"
