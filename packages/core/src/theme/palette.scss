@@ -103,6 +103,9 @@ html {
             --palette-#{"" + $key}: #{$value};
         }
     }
+
+    background-color: get-light-color(background);
+    color: get-light-color(text);
 }
 
 html[data-theme="dark"] {
@@ -115,4 +118,7 @@ html[data-theme="dark"] {
             --palette-#{"" + $key}: #{$value};
         }
     }
+
+    background-color: get-dark-color(background);
+    color: get-dark-color(text);
 }
