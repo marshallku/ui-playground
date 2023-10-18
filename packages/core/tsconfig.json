@@ -5,7 +5,7 @@
     "compilerOptions": {
         "resolveJsonModule": true,
         "paths": {
-            "#*": ["./src/*"]
+            "#*": ["../../packages/core/src/*"]
         }
     }
 }
