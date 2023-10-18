@@ -1,5 +1,11 @@
 # @marshallku/core
 
+## 0.0.3
+
+### Patch Changes
+
+-   Add dark theme support
+
 ## 0.0.2
 
 ### Patch Changes
