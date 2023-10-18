@@ -3,9 +3,6 @@
     "include": ["."],
     "exclude": ["dist", "build", "node_modules"],
     "compilerOptions": {
-        "resolveJsonModule": true,
-        "paths": {
-            "#*": ["../../packages/core/src/*"]
-        }
+        "resolveJsonModule": true
     }
 }

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { ThemeProvider as Provider } from "next-themes";
-import { THEME_STORAGE_KEY, Theme } from "#constants";
+import { THEME_STORAGE_KEY, Theme } from "../../constants";
 
 export interface ThemeProviderProps {
     children?: ReactNode;

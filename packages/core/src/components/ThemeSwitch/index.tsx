@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { classNames } from "@marshallku/utils";
-import { Theme } from "#constants";
+import { Theme } from "../../constants";
 import styles from "./index.module.scss";
 
 export interface ThemeSwitchProps {
