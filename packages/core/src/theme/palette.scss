@@ -34,9 +34,29 @@ $dark-palette: (
     ),
 );
 
-@function get-color($key, $sub-key: null) {
-    @if map-has-key($palettes, $key) {
-        $color: map-get($palettes, $key);
+@function get-light-color($key, $sub-key: null) {
+    @if map-has-key($light-palette, $key) {
+        $color: map-get($light-palette, $key);
+
+        @if type-of($color) == "map" {
+            @if map-has-key($color, $sub-key) {
+                $tone: map-get($color, $sub-key);
+                @return $tone;
+            }
+
+            @warn "`#{$sub-key}` doesn't exist in color";
+        }
+
+        @return $color;
+    }
+
+    @warn "`#{$color}` doesn't exist in palette";
+    @return null;
+}
+
+@function get-dark-color($key, $sub-key: null) {
+    @if map-has-key($dark-palette, $key) {
+        $color: map-get($dark-palette, $key);
 
         @if type-of($color) == "map" {
             @if map-has-key($color, $sub-key) {
@@ -55,8 +75,8 @@ $dark-palette: (
 }
 
 @function get-key($key, $sub-key: null) {
-    @if map-has-key($palettes, $key) {
-        $color: map-get($palettes, $key);
+    @if map-has-key($light-palette, $key) {
+        $color: map-get($light-palette, $key);
 
         @if type-of($color) == "map" {
             @if map-has-key($color, $sub-key) {
@@ -85,7 +105,7 @@ html {
     }
 }
 
-html.dark {
+html[data-theme="dark"] {
     @each $key, $value in $dark-palette {
         @if type-of($value) == "map" {
             @each $child-key, $child-value in $value {
