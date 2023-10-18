@@ -1,3 +1,6 @@
+"use client";
+
+import { ThemeSwitch } from "@marshallku/core";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -19,7 +22,9 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className={styles.center}></div>
+            <div className={styles.center}>
+                <ThemeSwitch />
+            </div>
 
             <div className={styles.grid}>
                 <a
