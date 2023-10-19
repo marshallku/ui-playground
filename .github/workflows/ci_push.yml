@@ -18,3 +18,12 @@ jobs:
                   check-latest: true
                   registry-url: https://registry.npmjs.org/
             - run: npx cspell --no-progress '**/*'
+    send-notification:
+        needs: [check-spelling]
+        if: ${{ failure() }}
+        uses: marshallku/ui-playground/.github/workflows/send_notification.yml@master
+        with:
+            status: ${{ contains(join(needs.*.result, ','), 'failure') }}
+            message: "CI job failed - push"
+        secrets:
+            url: ${{ secrets.DISCORD_WEBHOOK_URI }}

@@ -62,3 +62,12 @@ jobs:
                   bash .github/scripts/commit.sh
               env:
                   MESSAGE: "Update version of @marshallku/icon"
+    send-notification:
+        needs: [build]
+        if: ${{ failure() }}
+        uses: marshallku/ui-playground/.github/workflows/send_notification.yml@master
+        with:
+            status: ${{ contains(join(needs.*.result, ','), 'failure') }}
+            message: "Failed to build icon"
+        secrets:
+            url: ${{ secrets.DISCORD_WEBHOOK_URI }}

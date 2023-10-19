@@ -69,3 +69,12 @@ jobs:
               run: pnpm install --frozen-lockfile --strict-peer-dependencies
             - name: Build apps and packages
               run: pnpm build
+    send-notification:
+        needs: [lint-all, build-all]
+        if: ${{ failure() }}
+        uses: marshallku/ui-playground/.github/workflows/send_notification.yml@master
+        with:
+            status: ${{ contains(join(needs.*.result, ','), 'failure') }}
+            message: "CI job failed - push on master"
+        secrets:
+            url: ${{ secrets.DISCORD_WEBHOOK_URI }}

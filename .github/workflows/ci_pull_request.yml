@@ -69,3 +69,12 @@ jobs:
               run: pnpm install --frozen-lockfile --strict-peer-dependencies
             - name: Check code quality
               run: pnpm eslint $(git diff --name-only --diff-filter=duxb origin/${{ github.base_ref }} origin/${{ github.head_ref }} | grep -E '\\.((j|t)sx?)$' | xargs)
+    send-notification:
+        needs: [check-types, lint]
+        if: ${{ failure() }}
+        uses: marshallku/ui-playground/.github/workflows/send_notification.yml@master
+        with:
+            status: ${{ contains(join(needs.*.result, ','), 'failure') }}
+            message: "CI job failed - pull request"
+        secrets:
+            url: ${{ secrets.DISCORD_WEBHOOK_URI }}
