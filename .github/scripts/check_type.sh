@@ -8,7 +8,7 @@ while IFS= read -r line; do
         path="${ADDR[0]}/${ADDR[1]}"
         arr[$path]=1
     fi
-done < <(git diff --name-only --diff-filter=duxb "$BASE" "$HEAD" | grep -E '\.((j|t)sx?)$')
+done < <(git diff --name-only --diff-filter=duxb "origin/$BASE" "origin/$HEAD" | grep -E '\.((j|t)sx?)$')
 
 for key in "${!arr[@]}"; do
     package_file="$key/package.json"
