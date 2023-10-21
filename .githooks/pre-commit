@@ -1,0 +1,8 @@
+#!/bin/bash
+
+files_changed=$(git diff --cached --name-only --diff-filter=duxb | sed 's| |\\ |g')
+
+[ -z "$files_changed" ] && exit 0
+
+echo "$files_changed" | xargs npx prettier --ignore-unknown --write
+echo "$files_changed" | xargs git add
