@@ -14,12 +14,20 @@
     },
     "devDependencies": {
         "@changesets/cli": "^2.26.2",
+        "@testing-library/jest-dom": "^6.1.4",
+        "@testing-library/react": "^14.0.0",
+        "@vitejs/plugin-react": "^4.1.0",
+        "@vitejs/plugin-react-swc": "^3.4.0",
         "clean-css-cli": "^5.6.2",
         "eslint": "^8.50.0",
         "eslint-config-marshallku": "workspace:*",
+        "jsdom": "^22.1.0",
         "minify": "^10.3.0",
         "prettier": "^3.0.1",
-        "turbo": "^1.10.13"
+        "turbo": "^1.10.13",
+        "typescript": "^5.2.2",
+        "vitest": "^0.34.6",
+        "vitest-fetch-mock": "^0.2.2"
     },
     "packageManager": "pnpm@8.6.10"
 }
