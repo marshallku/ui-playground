@@ -21,6 +21,10 @@ const config = {
                         replacement: resolve("../../packages/core/src"),
                     },
                     {
+                        find: /#/,
+                        replacement: `${resolve("../../packages/core/src")}/`,
+                    },
+                    {
                         find: "@icon",
                         replacement: resolve("../../packages/icon/dist"),
                     },
