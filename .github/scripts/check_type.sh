@@ -17,11 +17,15 @@ for key in "${!arr[@]}"; do
         continue
     fi
 
-    if ! grep -q '"build": ' "$package_file"; then
-        continue
+    if grep -q '"build": ' "$package_file"; then
+        package_name=$(grep -oP '"name"\s*:\s*"\K[^"]*' "$package_file")
+
+        pnpm run build --filter="$package_name" || exit 1
     fi
 
-    package_name=$(grep -oP '"name"\s*:\s*"\K[^"]*' "$package_file")
+    if grep -q '"test": ' "$package_file"; then
+        package_name=$(grep -oP '"name"\s*:\s*"\K[^"]*' "$package_file")
 
-    pnpm run build --filter="$package_name" || exit 1
+        pnpm run test --filter="$package_name" || exit 1
+    fi
 done

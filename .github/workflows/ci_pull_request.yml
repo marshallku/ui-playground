@@ -7,8 +7,8 @@ env:
     CI: true
 
 jobs:
-    check-types:
-        name: Check types
+    check-code:
+        name: Build and Test
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
@@ -74,7 +74,7 @@ jobs:
             - name: Check code quality
               run: pnpm eslint $(git diff --name-only --diff-filter=duxb origin/${{ github.base_ref }} origin/${{ github.head_ref }} | grep -E '\\.((j|t)sx?)$' | xargs)
     send-notification:
-        needs: [check-types, lint]
+        needs: [check-code, lint]
         if: ${{ failure() }}
         uses: marshallku/ui-playground/.github/workflows/send_notification.yml@master
         with:
