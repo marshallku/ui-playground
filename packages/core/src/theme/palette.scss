@@ -80,13 +80,13 @@ $dark-palette: (
 
         @if type-of($color) == "map" {
             @if map-has-key($color, $sub-key) {
-                @return var(--bsm-#{$key}-#{$sub-key});
+                @return var(--palette-#{$key}-#{$sub-key});
             }
 
             @warn "`#{$sub-key}` doesn't exist in color";
         }
 
-        @return var(--bsm-#{$key});
+        @return var(--palette-#{$key});
     }
 
     @warn "`#{$color}` doesn't exist in palette";
