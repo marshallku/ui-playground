@@ -1,5 +1,9 @@
 import { resolve } from "path";
 
+const STYLE_ROOT = resolve("../../packages/core/src");
+
+console.log(`STYLE_ROOT`, STYLE_ROOT);
+
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
     stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -32,6 +36,17 @@ const config = {
             },
             define: {
                 "process.env": {},
+            },
+            css: {
+                postcss: null,
+                preprocessorOptions: {
+                    scss: {
+                        additionalData: `
+                            @import "${STYLE_ROOT}/styles/abstracts/_font.scss";
+                            @import "${STYLE_ROOT}/theme/palette.scss";
+                        `,
+                    },
+                },
             },
         };
     },
