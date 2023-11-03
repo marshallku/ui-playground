@@ -2,8 +2,6 @@ import { resolve } from "path";
 
 const STYLE_ROOT = resolve("../../packages/core/src");
 
-console.log(`STYLE_ROOT`, STYLE_ROOT);
-
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
     stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
