@@ -1,0 +1,12 @@
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &__input {
+        display: block;
+        padding: 8px;
+        border: 1px solid get-key(main, 500);
+        border-radius: 8px;
+    }
+}
