@@ -1,0 +1,55 @@
+.typography {
+    line-height: 1.75;
+
+    // variant - Major second scale
+    &--h1 {
+        font-size: toRem(32.44px);
+    }
+    &--h2 {
+        font-size: toRem(28.83px);
+    }
+    &--h3 {
+        font-size: toRem(25.63px);
+    }
+    &--h4 {
+        font-size: toRem(22.78px);
+    }
+    &--h5 {
+        font-size: toRem(20.25px);
+    }
+    &--h6 {
+        font-size: toRem(18px);
+    }
+    &--b1 {
+        font-size: toRem(16px);
+    }
+    &--b2 {
+        font-size: toRem(14.22px);
+    }
+    &--c1 {
+        font-size: toRem(12.64px);
+    }
+    // weight
+    @for $i from 1 through 9 {
+        &--#{$i * 100} {
+            font-weight: $i * 100;
+        }
+    }
+    // gutter
+    @for $i from 2 through 36 {
+        &--mt-#{$i} {
+            margin-top: toRem($i + 0px);
+        }
+    }
+    &--mt-true {
+        margin-top: toRem(16px);
+    }
+    @for $i from 2 through 36 {
+        &--mb-#{$i} {
+            margin-bottom: toRem($i + 0px);
+        }
+    }
+    &--mb-true {
+        margin-top: toRem(16px);
+    }
+}
