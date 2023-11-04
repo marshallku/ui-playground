@@ -254,6 +254,9 @@ importers:
             rollup-plugin-postcss:
                 specifier: ^4.0.2
                 version: 4.0.2(postcss@8.4.31)
+            rollup-plugin-preserve-directives:
+                specifier: ^0.2.0
+                version: 0.2.0(rollup@3.28.0)
             rollup-plugin-typescript2:
                 specifier: ^0.35.0
                 version: 0.35.0(rollup@3.28.0)(typescript@5.2.2)
@@ -15613,6 +15616,18 @@ packages:
             style-inject: 0.3.0
         transitivePeerDependencies:
             - ts-node
+        dev: true
+
+    /rollup-plugin-preserve-directives@0.2.0(rollup@3.28.0):
+        resolution:
+            {
+                integrity: sha512-KUwbBaFvD1zFIDNnOkR+u64sSod3m0l6q46/SzTOa4GTQ6hp6w0FRr2u7x99YkY9qhlna5panmTmuLWeJ/2KWw==,
+            }
+        peerDependencies:
+            rollup: 2.x || 3.x
+        dependencies:
+            magic-string: 0.30.5
+            rollup: 3.28.0
         dev: true
 
     /rollup-plugin-typescript2@0.35.0(rollup@3.28.0)(typescript@5.2.2):

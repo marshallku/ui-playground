@@ -6,6 +6,7 @@ import dts from "rollup-plugin-dts";
 import typescript from "rollup-plugin-typescript2";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
+import preserveDirectives from "rollup-plugin-preserve-directives";
 import pkg from "./package.json" assert { type: "json" };
 
 const external = [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})];
@@ -58,6 +59,7 @@ const options = [
                     ],
                 ],
             }),
+            preserveDirectives(),
         ],
     },
 ];
