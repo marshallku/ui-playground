@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, ReactNode, useMemo } from "react";
 import { classNames } from "@marshallku/utils";
-import { Typography, TypographyProps } from "#components";
+import Typography, { TypographyProps } from "#components/Typography";
 import styles from "./index.module.scss";
 
 export type ButtonSize = "extra-large" | "large" | "medium" | "small";
