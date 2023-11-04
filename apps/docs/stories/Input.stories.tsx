@@ -7,7 +7,7 @@ const story: Meta<InputProps> = {
     parameters: {
         docs: {
             description: {
-                component: "ADD_YOUR_DESCRIPTION",
+                component: "Allows users to input data",
             },
         },
     },

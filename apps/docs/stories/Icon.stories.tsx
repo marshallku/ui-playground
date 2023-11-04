@@ -4,11 +4,11 @@ import icons from "@icon/constants";
 
 const story: Meta<IconProps> = {
     component: Icon,
-    title: "Components/Icon",
+    title: "Display/Icon",
     parameters: {
         docs: {
             description: {
-                component: "ADD_YOUR_DESCRIPTION",
+                component: "Display icons",
             },
         },
     },

@@ -4,10 +4,11 @@ import { Meta, StoryObj } from "@storybook/react";
 const story: Meta<ButtonProps> = {
     component: Button,
     title: "Components/Button",
+    tags: ["autodocs"],
     parameters: {
         docs: {
             description: {
-                component: "버튼입니다.",
+                component: "Allows for user interaction and can trigger specific actions",
             },
         },
     },
@@ -17,6 +18,6 @@ export default story;
 
 export const StringChildren: StoryObj<ButtonProps> = {
     args: {
-        children: "안녕하세요",
+        children: "Click me!",
     },
 };
