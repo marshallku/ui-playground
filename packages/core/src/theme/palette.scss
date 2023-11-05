@@ -133,33 +133,3 @@ $dark-palette: (
     @warn "`#{$color}` doesn't exist in palette";
     @return null;
 }
-
-html {
-    @each $key, $value in $light-palette {
-        @if type-of($value) == "map" {
-            @each $child-key, $child-value in $value {
-                --palette-#{"" + $key}-#{"" + $child-key}: #{$child-value};
-            }
-        } @else {
-            --palette-#{"" + $key}: #{$value};
-        }
-    }
-
-    background-color: get-light-color(background);
-    color: get-light-color(text);
-}
-
-html[data-theme="dark"] {
-    @each $key, $value in $dark-palette {
-        @if type-of($value) == "map" {
-            @each $child-key, $child-value in $value {
-                --palette-#{"" + $key}-#{"" + $child-key}: #{$child-value};
-            }
-        } @else {
-            --palette-#{"" + $key}: #{$value};
-        }
-    }
-
-    background-color: get-dark-color(background);
-    color: get-dark-color(text);
-}
