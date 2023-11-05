@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { Button, Typography } from "@marshallku/core";
+import { Typography } from "@marshallku/core";
+import { Button } from "#components";
 import styles from "./page.module.scss";
 
 export default function Home() {
@@ -9,10 +9,10 @@ export default function Home() {
         <main className={styles.main}>
             <Typography component="h1">Chat app</Typography>
             <div>
-                <Button component={Link} href="/login" size="large" horizontalResizing="fill" variant="primary">
+                <Button href="/login" size="large" horizontalResizing="fill" variant="primary">
                     Login
                 </Button>
-                <Button component={Link} href="/sign-up" size="large" horizontalResizing="fill">
+                <Button href="/sign-up" size="large" horizontalResizing="fill">
                     Sign up
                 </Button>
             </div>
