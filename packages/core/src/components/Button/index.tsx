@@ -40,7 +40,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const cx = classNames(styles, "button");
 
 function Button({
-    size,
+    size = "medium",
     variant = "secondary",
     radius = "rounded",
     horizontalResizing = "hug",
