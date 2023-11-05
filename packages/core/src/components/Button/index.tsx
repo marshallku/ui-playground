@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode, useMemo } from "react";
+import { ButtonHTMLAttributes, ReactNode, createElement, useMemo } from "react";
 import { classNames } from "@marshallku/utils";
 import Typography, { TypographyProps } from "#components/Typography";
 import styles from "./index.module.scss";
@@ -8,7 +8,8 @@ export type ButtonVariant = "base" | "text" | "primary" | "secondary" | "outline
 export type ButtonRadius = "square" | "rounded" | "capsule" | "circle";
 export type ButtonResizing = "hug" | "fill";
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export type ButtonProps<T extends object> = ButtonHTMLAttributes<HTMLButtonElement> & {
+    component?(props: T): ReactNode;
     /**
      * Size of the padding and font
      *
@@ -35,11 +36,12 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     horizontalResizing?: ButtonResizing;
     className?: string;
     children: ReactNode;
-}
+} & T;
 
 const cx = classNames(styles, "button");
 
-function Button({
+function Button<T extends object>({
+    component,
     size = "medium",
     variant = "secondary",
     radius = "rounded",
@@ -49,7 +51,7 @@ function Button({
     disabled,
     children,
     ...props
-}: ButtonProps) {
+}: ButtonProps<T>) {
     const typographyVariant: TypographyProps["variant"] = useMemo(() => {
         if (size === "medium") {
             return "b2";
@@ -61,9 +63,11 @@ function Button({
 
         return "b1";
     }, [size]);
-    return (
-        <button
-            className={cx(
+
+    return createElement(
+        component || "button",
+        {
+            className: cx(
                 "",
                 `--size-${size}`,
                 `--variant-${variant}`,
@@ -73,19 +77,18 @@ function Button({
                 {
                     className,
                 },
-            )}
-            type={type}
-            disabled={disabled}
-            {...props}
-        >
-            {variant === "base" ? (
-                children
-            ) : (
-                <Typography component="span" variant={typographyVariant}>
-                    {children}
-                </Typography>
-            )}
-        </button>
+            ),
+            type,
+            disabled,
+            ...props,
+        } as T,
+        variant === "base" ? (
+            children
+        ) : (
+            <Typography component="span" variant={typographyVariant}>
+                {children}
+            </Typography>
+        ),
     );
 }
 
