@@ -1,0 +1,17 @@
+.global-navigation {
+    $navigation-height: 60px;
+    display: flex;
+    height: $navigation-height;
+    padding: 0 12px;
+    align-items: center;
+
+    &__home {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    &__logo {
+        width: calc($navigation-height - 12px);
+        height: calc($navigation-height - 12px);
+    }
+}

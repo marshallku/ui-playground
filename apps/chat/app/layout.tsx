@@ -4,6 +4,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import Head from "next/head";
+import { GlobalNavigation } from "#components";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -21,7 +22,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css"
                 />
             </Head>
-            <body>{children}</body>
+            <body>
+                <GlobalNavigation />
+                {children}
+            </body>
         </html>
     );
 }
