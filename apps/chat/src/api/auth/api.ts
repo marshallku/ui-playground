@@ -6,8 +6,9 @@ export async function authLogin(requestBody: LoginRequest): Promise<LoginRespons
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            body: JSON.stringify(requestBody),
         },
+        body: JSON.stringify(requestBody),
+        credentials: "include",
     });
     const data = await response.json();
 
@@ -19,8 +20,9 @@ export async function authSignUp(requestBody: SignUpRequest): Promise<SignUpResp
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            body: JSON.stringify(requestBody),
         },
+        body: JSON.stringify(requestBody),
+        credentials: "include",
     });
     const data = response.json();
 
