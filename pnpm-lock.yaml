@@ -55,6 +55,9 @@ importers:
 
     apps/chat:
         dependencies:
+            "@hookform/resolvers":
+                specifier: ^3.3.2
+                version: 3.3.2(react-hook-form@7.48.2)
             "@marshallku/core":
                 specifier: workspace:^
                 version: link:../../packages/core
@@ -70,6 +73,12 @@ importers:
             react-dom:
                 specifier: ^18.2.0
                 version: 18.2.0(react@18.2.0)
+            react-hook-form:
+                specifier: ^7.48.2
+                version: 7.48.2(react@18.2.0)
+            zod:
+                specifier: ^3.22.4
+                version: 3.22.4
         devDependencies:
             "@marshallku/tsconfig":
                 specifier: workspace:*
@@ -2954,6 +2963,17 @@ packages:
                 integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==,
             }
         dev: true
+
+    /@hookform/resolvers@3.3.2(react-hook-form@7.48.2):
+        resolution:
+            {
+                integrity: sha512-Tw+GGPnBp+5DOsSg4ek3LCPgkBOuOgS5DsDV7qsWNH9LZc433kgsWICjlsh2J9p04H2K66hsXPPb9qn9ILdUtA==,
+            }
+        peerDependencies:
+            react-hook-form: ^7.0.0
+        dependencies:
+            react-hook-form: 7.48.2(react@18.2.0)
+        dev: false
 
     /@humanwhocodes/config-array@0.11.11:
         resolution:
@@ -15074,6 +15094,18 @@ packages:
             react-is: 18.1.0
         dev: true
 
+    /react-hook-form@7.48.2(react@18.2.0):
+        resolution:
+            {
+                integrity: sha512-H0T2InFQb1hX7qKtDIZmvpU1Xfn/bdahWBN1fH19gSe4bBEqTfmlr7H3XWTaVtiK4/tpPaI1F3355GPMZYge+A==,
+            }
+        engines: { node: ">=12.22.0" }
+        peerDependencies:
+            react: ^16.8.0 || ^17 || ^18
+        dependencies:
+            react: 18.2.0
+        dev: false
+
     /react-inspector@6.0.2(react@18.2.0):
         resolution:
             {
@@ -18599,3 +18631,10 @@ packages:
             }
         engines: { node: ">=12.20" }
         dev: true
+
+    /zod@3.22.4:
+        resolution:
+            {
+                integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==,
+            }
+        dev: false
