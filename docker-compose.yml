@@ -1,14 +1,14 @@
 version: "3"
 
 services:
-    next:
-        container_name: next
+    chat-client:
+        container_name: chat-client
         build:
             context: .
-            dockerfile: ./apps/next/Dockerfile
+            dockerfile: ./apps/chat/Dockerfile
         restart: unless-stopped
         ports:
-            - 43030:3000
+            - 32343:3000
         networks:
             - app_network
 
