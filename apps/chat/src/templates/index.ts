@@ -1,3 +1,5 @@
+export * from "./Chat";
+export { default as ChatTemplate } from "./Chat";
 export * from "./ChatRoomList";
 export { default as ChatRoomList } from "./ChatRoomList";
 export * from "./Home";

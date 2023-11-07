@@ -1,0 +1,80 @@
+.chat {
+    $form-height: 37px;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    overflow-x: hidden;
+
+    &__form {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        width: 100%;
+        height: $form-height;
+        z-index: 100;
+
+        :first-child {
+            flex-grow: 1;
+        }
+    }
+
+    &__list {
+        padding: 0 10px calc($form-height + 10px);
+        overflow: hidden auto;
+    }
+
+    &-chat {
+        $chat: &;
+        display: block;
+        padding: 4px 0;
+
+        &--mine {
+            text-align: right;
+
+            // FIXME: this should be the child of `&__bubble`
+            #{$chat}__bubble {
+                background-color: var(--palette-primary-container);
+
+                &::after {
+                    clip: rect(0, 28px, 10px, 19px);
+                    border-color: var(--palette-primary-container);
+                    left: auto;
+                    right: -37.3px;
+                }
+            }
+        }
+
+        &__name {
+            display: block;
+        }
+
+        &__bubble {
+            $bubble: &;
+            position: relative;
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: var(--palette-grayscale-200);
+            border-radius: 4px;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 5px;
+                left: -37.4px;
+                display: block;
+                width: 17.5px;
+                height: 25px;
+                clip: rect(0, 41px, 15px, 28px);
+                border-width: 0;
+                border-bottom: 0 solid var(--palette-grayscale-200);
+                border-left: 20px solid var(--palette-grayscale-200);
+                border-radius: 50%;
+                border-right: 20px solid var(--palette-grayscale-200);
+                border-top: 0 solid var(--palette-grayscale-200);
+                box-sizing: content-box;
+                z-index: 1;
+            }
+        }
+    }
+}
