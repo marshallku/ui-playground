@@ -1,0 +1,14 @@
+.chat-room-list {
+    display: flex;
+    padding: 0 10px;
+    flex-direction: column;
+    gap: 10px;
+
+    & &__room {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+}
