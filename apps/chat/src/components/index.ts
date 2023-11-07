@@ -1,3 +1,4 @@
+export { default as BottomNavigation } from "./BottomNavigation";
 export { default as Button } from "./Button";
 export * from "./GlobalNavigation";
 export { default as GlobalNavigation } from "./GlobalNavigation";
