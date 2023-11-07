@@ -17,7 +17,7 @@ FROM base AS builder
 
 RUN npm install -g turbo
 COPY . .
-RUN turbo prune --scope=@marshallku/next --docker
+RUN turbo prune --scope=@marshallku/chat --docker
 
 # Add lockfile and package.json's of isolated subworkspace
 FROM base AS installer
@@ -39,7 +39,7 @@ COPY turbo.json turbo.json
 # ARG TURBO_TOKEN
 # ENV TURBO_TOKEN=$TURBO_TOKEN
 
-RUN pnpm turbo run build --filter=@marshallku/next...
+RUN pnpm turbo run build --filter=@marshallku/chat...
 
 FROM base AS runner
 WORKDIR /app
@@ -49,13 +49,13 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 USER nextjs
 
-COPY --from=installer /app/apps/next/next.config.js .
-COPY --from=installer /app/apps/next/package.json .
+COPY --from=installer /app/apps/chat/next.config.js .
+COPY --from=installer /app/apps/chat/package.json .
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=installer --chown=nextjs:nodejs /app/apps/next/.next/standalone ./
-COPY --from=installer --chown=nextjs:nodejs /app/apps/next/.next/static ./apps/next/.next/static
-COPY --from=installer --chown=nextjs:nodejs /app/apps/next/public ./apps/next/public
+COPY --from=installer --chown=nextjs:nodejs /app/apps/chat/.next/standalone ./
+COPY --from=installer --chown=nextjs:nodejs /app/apps/chat/.next/static ./apps/chat/.next/static
+COPY --from=installer --chown=nextjs:nodejs /app/apps/chat/public ./apps/chat/public
 
-CMD node apps/next/server.js
+CMD node apps/chat/server.js
