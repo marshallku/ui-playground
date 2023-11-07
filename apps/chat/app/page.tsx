@@ -1,5 +1,5 @@
-"use client";
-
+import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import { Typography } from "@marshallku/core";
 import { classNames } from "@marshallku/utils";
 import { Button, GlobalNavigation } from "#components";
@@ -7,13 +7,37 @@ import styles from "./page.module.scss";
 
 const cx = classNames(styles, "home");
 
-export default function Home() {
+async function getUserData() {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_CHAT_SERVER_API_URL}/auth/profile`, {
+        headers: {
+            "Content-Type": "application/json",
+            Cookie: cookies().toString(),
+        },
+        credentials: "include",
+        cache: "no-store",
+    });
+    const data = await response.json();
+
+    if (data.username) {
+        redirect("/home");
+    }
+
+    return data;
+}
+
+export default async function Home() {
+    // FIXME: Check if user is logged in - in right way
+    await getUserData();
+
     return (
         <>
             <GlobalNavigation />
             <main className={cx()}>
-                <Typography variant="h1" component="h1" fontWeight={700} marginBottom={24} className={cx("__title")}>
+                <Typography variant="h1" component="h1" fontWeight={700} marginBottom={12} className={cx("__title")}>
                     Chat app
+                </Typography>
+                <Typography marginBottom={24}>
+                    ⚠️ Note: This application is extremely experimental. Your data might be deleted at any time.
                 </Typography>
                 <div className={cx("__buttons")}>
                     <Button href="/login" size="large" horizontalResizing="fill" variant="primary">
