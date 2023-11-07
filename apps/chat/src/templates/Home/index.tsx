@@ -1,7 +1,7 @@
 "use client";
 
 import { classNames } from "@marshallku/utils";
-import { User } from "#api";
+import { User, createChatRoom } from "#api";
 import { Button } from "#components";
 import styles from "./index.module.scss";
 import { Typography } from "@marshallku/core";
@@ -25,6 +25,11 @@ function HomeTemplate({ data }: HomeTemplateProps) {
                         if (!confirm(`Do you want to chat with ${name}?`)) {
                             return;
                         }
+
+                        await createChatRoom({
+                            name: prompt("Please enter the name of the chat room.") || "Chat room",
+                            users: [_id],
+                        });
                     }}
                 >
                     <Typography component="p" fontWeight={500} marginBottom={4}>
