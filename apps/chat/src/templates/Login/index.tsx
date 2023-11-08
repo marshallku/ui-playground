@@ -37,7 +37,7 @@ function LoginTemplate() {
                         return;
                     }
 
-                    router.push("/");
+                    router.push("/home");
                 })}
             >
                 <Input label="ID" {...register("name")} />

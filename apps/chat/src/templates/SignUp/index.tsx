@@ -43,7 +43,7 @@ function SignUpTemplate() {
                         return;
                     }
 
-                    router.push("/");
+                    router.push("/home");
                 })}
             >
                 <Input label="ID" {...register("name")} />
