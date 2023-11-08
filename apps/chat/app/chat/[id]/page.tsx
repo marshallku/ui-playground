@@ -35,3 +35,5 @@ export default async function Home({ params: { id } }: { params: { id: string } 
         </main>
     );
 }
+
+export const dynamic = "force-dynamic";

@@ -25,3 +25,5 @@ export default async function List() {
         </main>
     );
 }
+
+export const dynamic = "force-dynamic";
