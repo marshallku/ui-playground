@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Button, Typography } from "@marshallku/core";
+import { Button, Typography } from "@marshallku/ui";
 import { classNames } from "@marshallku/utils";
 import { Logo } from "#components";
 import styles from "./index.module.scss";

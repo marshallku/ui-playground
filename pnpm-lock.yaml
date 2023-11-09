@@ -58,9 +58,9 @@ importers:
             "@hookform/resolvers":
                 specifier: ^3.3.2
                 version: 3.3.2(react-hook-form@7.48.2)
-            "@marshallku/core":
+            "@marshallku/ui":
                 specifier: workspace:^
-                version: link:../../packages/core
+                version: link:../../packages/ui
             "@marshallku/utils":
                 specifier: workspace:^
                 version: link:../../packages/utils
@@ -104,9 +104,9 @@ importers:
 
     apps/docs:
         dependencies:
-            "@marshallku/core":
+            "@marshallku/ui":
                 specifier: workspace:*
-                version: link:../../packages/core
+                version: link:../../packages/ui
             "@marshallku/icon":
                 specifier: workspace:^
                 version: link:../../packages/icon
@@ -183,9 +183,9 @@ importers:
 
     apps/next:
         dependencies:
-            "@marshallku/core":
+            "@marshallku/ui":
                 specifier: workspace:^
-                version: link:../../packages/core
+                version: link:../../packages/ui
             next:
                 specifier: ^13.5.4
                 version: 13.5.4(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)
@@ -215,7 +215,7 @@ importers:
                 specifier: ^5.2.2
                 version: 5.2.2
 
-    packages/core:
+    packages/ui:
         dependencies:
             "@marshallku/utils":
                 specifier: workspace:^

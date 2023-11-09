@@ -39,8 +39,8 @@ jobs:
               run: pnpm build --filter @marshallku/icon
             - name: Copy and format output files
               run: |
-                  cp packages/icon/dist/constants.ts packages/core/src/Icon
-                  pnpm prettier --write packages/core/src/Icon
+                  cp packages/icon/dist/constants.ts packages/ui/src/Icon
+                  pnpm prettier --write packages/ui/src/Icon
             - name: Check working tree
               run: |
                   file_changed=$(bash .github/scripts/check_working_tree.sh)

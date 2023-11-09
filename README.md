@@ -87,12 +87,12 @@ export default Button;
 
 ### Adding a new component
 
-When adding a new file, instead of adding new files manually, you can run `pnpm create-core` to generate new files.
+When adding a new file, instead of adding new files manually, you can run `pnpm create-ui` to generate new files.
 
-- packages/core/$COMPONENT_NAME/index.tsx
-- packages/core/$COMPONENT_NAME/index.module.scss
+- packages/ui/$COMPONENT_NAME/index.tsx
+- packages/ui/$COMPONENT_NAME/index.module.scss
 
-- packages/core/index.ts
+- packages/ui/index.ts
 
 ## Storybook
 
@@ -100,13 +100,13 @@ Storybook provides us with an interactive UI playground for our components. This
 
 - Use Vite to bundle stories instantly (in milliseconds)
 - Automatically find any stories inside the `stories/` folder
-- Support using module path aliases like `@marshallku-core` for imports
+- Support using module path aliases like `@marshallku/ui` for imports
 - Write MDX for component documentation pages
 
 For example, here's the included Story for our `Button` component:
 
 ```js:apps/docs/stories/button.stories.mdx
-import { Button } from '@marshallku-core/src';
+import { Button } from '@marshallku/core/src';
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 
 <Meta title="Components/Button" component={Button} />

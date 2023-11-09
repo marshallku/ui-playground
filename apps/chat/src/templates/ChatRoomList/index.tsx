@@ -4,7 +4,7 @@ import { classNames } from "@marshallku/utils";
 import { ChatRoom } from "#api";
 import { Button } from "#components";
 import styles from "./index.module.scss";
-import { Typography } from "@marshallku/core";
+import { Typography } from "@marshallku/ui";
 
 export interface ChatRoomListProps {
     data: ChatRoom[];

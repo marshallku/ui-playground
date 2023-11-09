@@ -9,7 +9,7 @@
         "changeset": "changeset",
         "version-packages": "changeset version",
         "release": "turbo run build --filter=docs^... && changeset publish",
-        "create-core": "bash scripts/create-component.sh",
+        "create-ui": "bash scripts/create-component.sh",
         "update-packages": "bash scripts/update-packages.sh"
     },
     "devDependencies": {

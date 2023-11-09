@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeSwitch } from "@marshallku/core";
+import { ThemeSwitch } from "@marshallku/ui";
 import styles from "./page.module.css";
 
 export default function Home() {

@@ -1,6 +1,6 @@
 import { resolve } from "path";
 
-const STYLE_ROOT = resolve("../../packages/core/src");
+const STYLE_ROOT = resolve("../../packages/ui/src");
 
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
@@ -19,12 +19,12 @@ const config = {
             resolve: {
                 alias: [
                     {
-                        find: "@core",
-                        replacement: resolve("../../packages/core/src"),
+                        find: "@ui",
+                        replacement: resolve("../../packages/ui/src"),
                     },
                     {
                         find: /#/,
-                        replacement: `${resolve("../../packages/core/src")}/`,
+                        replacement: `${resolve("../../packages/ui/src")}/`,
                     },
                     {
                         find: "@icon",

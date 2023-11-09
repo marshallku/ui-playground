@@ -1,4 +1,4 @@
-import { Icon, IconProps } from "@core";
+import { Icon, IconProps } from "@ui";
 import { Meta, StoryFn } from "@storybook/react";
 import icons from "@icon/constants";
 

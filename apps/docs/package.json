@@ -9,7 +9,7 @@
         "clean": "rm -rf .turbo && rm -rf node_modules"
     },
     "dependencies": {
-        "@marshallku/core": "workspace:*",
+        "@marshallku/ui": "workspace:*",
         "@marshallku/icon": "workspace:^",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"

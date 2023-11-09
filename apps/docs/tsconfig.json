@@ -1,11 +1,11 @@
 {
     "extends": "@marshallku/tsconfig/react-library.json",
-    "include": [".", "../../packages/core"],
+    "include": [".", "../../packages/ui"],
     "exclude": ["dist", "build", "node_modules"],
     "compilerOptions": {
         "paths": {
-            "@core": ["../../packages/core/src"],
-            "#*": ["../../packages/core/src/*"],
+            "@ui": ["../../packages/ui/src"],
+            "#*": ["../../packages/ui/src/*"],
             "@icon/*": ["../../packages/icon/dist/*"]
         }
     }

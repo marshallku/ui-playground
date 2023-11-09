@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeProvider } from "@marshallku/core";
+import { ThemeProvider } from "@marshallku/ui";
 import { ReactNode, useEffect, useState } from "react";
 
 interface ProviderProps {

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { io } from "socket.io-client";
-import { Input, Typography } from "@marshallku/core";
+import { Input, Typography } from "@marshallku/ui";
 import { classNames } from "@marshallku/utils";
 import { Button } from "#components";
 import styles from "./index.module.scss";

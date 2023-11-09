@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input, Typography } from "@marshallku/core";
+import { Input, Typography } from "@marshallku/ui";
 import { classNames } from "@marshallku/utils";
 import { authLogin } from "#api";
 import { Button } from "#components";

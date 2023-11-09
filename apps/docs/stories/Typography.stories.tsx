@@ -1,4 +1,4 @@
-import { Typography, TypographyProps } from "@core";
+import { Typography, TypographyProps } from "@ui";
 import { Meta, StoryObj } from "@storybook/react";
 
 const story: Meta<TypographyProps> = {

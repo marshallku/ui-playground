@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { Typography } from "@marshallku/core";
+import { Typography } from "@marshallku/ui";
 import { classNames } from "@marshallku/utils";
 import { Button, GlobalNavigation } from "#components";
 import styles from "./page.module.scss";
