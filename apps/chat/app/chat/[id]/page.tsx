@@ -13,7 +13,7 @@ async function getUserInfo() {
         redirect("/");
     }
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_CHAT_SERVER_API_URL}/auth/profile`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_CHAT_SERVER_API_URL}/auth/status`, {
         headers: {
             "Content-Type": "application/json",
             Cookie: cookies().toString(),
