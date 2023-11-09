@@ -74,6 +74,10 @@ function ChatTemplate({ token, userId, userName, chatRoomId }: ChatTemplateProps
         };
     }, [chatRoomId, socket, userName]);
 
+    useEffect(() => {
+        messageListRef.current?.scrollTo(0, messageListRef.current.scrollHeight);
+    }, []);
+
     return (
         <div className={cx()}>
             <ul className={cx("__list")} ref={messageListRef}>
@@ -112,6 +116,7 @@ function ChatTemplate({ token, userId, userName, chatRoomId }: ChatTemplateProps
                     onChange={({ currentTarget: { value } }) => {
                         setMessage(value);
                     }}
+                    autoFocus
                 />
                 <Button type="submit" variant="primary" radius="square">
                     Send
