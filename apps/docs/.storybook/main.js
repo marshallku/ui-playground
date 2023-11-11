@@ -23,6 +23,10 @@ const config = {
                         replacement: resolve("../../packages/ui/src"),
                     },
                     {
+                        find: "@dist",
+                        replacement: resolve("../../packages/ui/dist"),
+                    },
+                    {
                         find: /#/,
                         replacement: `${resolve("../../packages/ui/src")}/`,
                     },
