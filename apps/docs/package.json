@@ -9,26 +9,26 @@
         "clean": "rm -rf .turbo && rm -rf node_modules"
     },
     "dependencies": {
-        "@marshallku/ui": "workspace:*",
         "@marshallku/icon": "workspace:^",
+        "@marshallku/ui": "workspace:*",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
         "@marshallku/tsconfig": "workspace:*",
-        "@storybook/addon-actions": "^7.5.2",
-        "@storybook/addon-docs": "^7.5.2",
-        "@storybook/addon-essentials": "^7.5.2",
-        "@storybook/addon-interactions": "^7.5.2",
-        "@storybook/addon-links": "^7.5.2",
-        "@storybook/blocks": "^7.5.2",
-        "@storybook/builder-vite": "^7.5.2",
-        "@storybook/react": "^7.5.2",
-        "@storybook/react-vite": "^7.5.2",
+        "@storybook/addon-actions": "^7.5.3",
+        "@storybook/addon-docs": "^7.5.3",
+        "@storybook/addon-essentials": "^7.5.3",
+        "@storybook/addon-interactions": "^7.5.3",
+        "@storybook/addon-links": "^7.5.3",
+        "@storybook/blocks": "^7.5.3",
+        "@storybook/builder-vite": "^7.5.3",
+        "@storybook/react": "^7.5.3",
+        "@storybook/react-vite": "^7.5.3",
         "@vitejs/plugin-react": "^4.1.1",
         "node-sass": "^9.0.0",
         "serve": "^14.2.1",
-        "storybook": "^7.5.2",
+        "storybook": "^7.5.3",
         "typescript": "^5.2.2",
         "vite": "^4.5.0"
     }
