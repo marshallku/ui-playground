@@ -1,0 +1,76 @@
+.modal {
+    $self: &;
+    z-index: 10000;
+
+    @keyframes open {
+        from {
+            opacity: 0;
+            transform: translate3d(-50%, 100%, 0);
+        }
+        to {
+            opacity: 1;
+            transform: translate3d(-50%, 0, 0);
+        }
+    }
+
+    @keyframes close {
+        from {
+            opacity: 1;
+            transform: translate3d(-50%, 0, 0);
+        }
+        to {
+            opacity: 0;
+            transform: translate3d(-50%, 100%, 0);
+        }
+    }
+
+    &__dimmed {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        overscroll-behavior: none;
+    }
+
+    &__header {
+        display: flex;
+    }
+
+    &__container {
+        $container: &;
+        $container-margin: 10px;
+        position: fixed;
+        left: 50%;
+        width: clamp(0px, calc(100% - ($container-margin * 2)), 860px);
+        padding: 20px 10px;
+        max-height: 80%;
+        background-color: color(background);
+        border-radius: 8px;
+        transform: translate(-50%, 0);
+
+        @at-root {
+            #{$self}--position {
+                &-top #{$container} {
+                    top: 10px;
+                }
+                &-center #{$container} {
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                }
+                &-bottom #{$container} {
+                    bottom: 10px;
+                }
+            }
+
+            #{$self}--opened & {
+                animation: open 0.3s ease-in-out forwards;
+            }
+
+            #{$self}--closed & {
+                animation: close 0.3s ease-in-out forwards;
+            }
+        }
+    }
+}

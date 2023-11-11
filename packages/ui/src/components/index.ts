@@ -10,3 +10,5 @@ export * from "./ThemeSwitch";
 export { default as ThemeSwitch } from "./ThemeSwitch";
 export * from "./Typography";
 export { default as Typography } from "./Typography";
+export * from "./Modal";
+export { default as Modal } from "./Modal";
