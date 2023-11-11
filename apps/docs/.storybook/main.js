@@ -4,14 +4,14 @@ const STYLE_ROOT = resolve("../../packages/ui/src");
 
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
-    stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+    stories: ["../stories/**/*.stories.@(js|jsx|mjs|ts|tsx|mdx)"],
     addons: ["@storybook/addon-links", "@storybook/addon-essentials", "@storybook/addon-interactions"],
     framework: {
         name: "@storybook/react-vite",
         options: {},
     },
     docs: {
-        autodocs: "tag",
+        autodocs: true,
     },
     async viteFinal(config, { configType }) {
         return {
