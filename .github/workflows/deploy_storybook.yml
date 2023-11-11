@@ -1,0 +1,63 @@
+name: Deploy storybook
+
+on:
+    push:
+        branches:
+            - master
+        paths:
+            - "packages/ui/**"
+            - "apps/docs/**"
+    workflow_dispatch:
+
+jobs:
+    deploy:
+        name: Deploy storybook to server
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+                  check-latest: true
+                  registry-url: https://registry.npmjs.org/
+            - name: Install pnpm
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 8
+                  run_install: false
+            - name: Get pnpm store directory
+              id: pnpm-cache
+              shell: bash
+              run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+            - uses: actions/cache@v3
+              name: Setup pnpm cache
+              with:
+                  path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-store-
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile --strict-peer-dependencies
+            - name: Build storybook
+              run: pnpm build --filter @marshallku/docs
+            - name: Deploy to server
+              uses: burnett01/rsync-deployments@4.1
+              with:
+                  switches: -avzr --delete
+                  remote_path: ${{ secrets.STORYBOOK_PATH }}
+                  remote_host: ${{ secrets.DEV_SERVER_HOST }}
+                  remote_port: ${{ secrets.DEV_SERVER_PORT }}
+                  remote_user: ${{ secrets.DEV_SERVER_USER }}
+                  remote_key: ${{ secrets.SSH_KEY }}
+                  path: /apps/docs/storybook-static
+    send-notification:
+        needs: [deploy]
+        if: ${{ failure() }}
+        uses: marshallku/ui-playground/.github/workflows/send_notification.yml@master
+        with:
+            status: ${{ contains(join(needs.*.result, ','), 'failure') }}
+            message: "CI job failed - deploying storybook"
+        secrets:
+            url: ${{ secrets.DISCORD_WEBHOOK_URI }}
