@@ -42,19 +42,8 @@ export const Default: StoryObj<${component_name}Props> = {
     args: {},
 };" >>"$story_dir/$component_name.stories.tsx"
 
-found=0
-next_component=''
-for file in "$ui_dir/"*; do
-    if [[ "$found" -eq 1 ]]; then
-        next_component=${file:29}
-        break
-    fi
-
-    if [ "$file" = "$component_dir" ]; then
-        found=1
-    fi
-done
-
+next_component=$(find "$ui_dir" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort | awk -v specific="$component_name" '{if (p) {print; exit 0}; if ($0 == specific) p=1}')
+echo "$next_component"
 regex="export \* from \"./$next_component\";"
 export_all="export * from \"./$component_name\";"
 export_default="export { default as $component_name } from \"./$component_name\";"
