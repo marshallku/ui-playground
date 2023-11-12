@@ -8,7 +8,7 @@ export type ButtonVariant = "base" | "text" | "primary" | "secondary" | "outline
 export type ButtonRadius = "square" | "rounded" | "capsule" | "circle";
 export type ButtonResizing = "hug" | "fill";
 
-export type ButtonProps<T extends object = Record<string, never>> = ButtonHTMLAttributes<HTMLButtonElement> & {
+export type ButtonProps<T extends object = Record<never, never>> = ButtonHTMLAttributes<HTMLButtonElement> & {
     component?(props: T): ReactNode;
     /**
      * Size of the padding and font
