@@ -8,6 +8,7 @@ This Turborepo includes the following packages and applications:
 
 - applications
   - `docs`: Documentation of components with Storybook
+  - `chat`: Front-end chat application for [nest-chat-api](https://github.com/marshallku/nestjs-chat-api)
   - `gallery-blog`: Application for testing micro frontend for my gallery blog
   - `next`: Sample nextjs application
 - packages
