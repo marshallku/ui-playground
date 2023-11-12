@@ -5,18 +5,39 @@ import { createPortal } from "react-dom";
 import { classNames } from "@marshallku/utils";
 import Typography from "#components/Typography";
 import styles from "./index.module.scss";
+import Button from "#components/Button";
 
 const PORTAL_ROOT_ID = "modal";
 
 export type ModalPosition = "top" | "center" | "bottom";
 
 export interface ModalProps {
+    /** Position */
     position?: ModalPosition;
+    /** Title displayed at the top of Modal */
     title?: string;
+    /** Nodes displayed after the title */
     headerChildren?: ReactNode;
+    /** State of the Modal */
     opened: boolean;
+    /** Text displayed at the confirm button */
+    confirmText?: ReactNode;
+    /** Text displayed at the cancel button */
+    cancelText?: ReactNode;
+    /** Function called after the modal closes */
     onClose?(): void;
+    /** Function called after the modal opens */
     onOpen?(): void;
+    /**
+     * Function called before the modal closes
+     *
+     * If this function returns a falsy value, the modal will not close
+     */
+    onBeforeClose?(): boolean | void | Promise<boolean> | Promise<void>;
+    /** Function called when the confirm button is clicked */
+    onConfirm?(): void | (() => void);
+    /** Function called when the confirm button is clicked */
+    onCancel?(): void;
     children?: ReactNode;
 }
 
@@ -27,8 +48,13 @@ function Modal({
     title,
     headerChildren,
     opened,
+    confirmText,
+    cancelText,
     onClose,
     onOpen,
+    onBeforeClose,
+    onConfirm,
+    onCancel,
     children,
 }: ModalProps): ReactPortal | null {
     const [revealed, setRevealed] = useState(false);
@@ -36,7 +62,7 @@ function Modal({
     const containerRef = useRef<HTMLElement>(null);
 
     const closeModal = useCallback(
-        (cb?: (event: AnimationEvent) => void) => {
+        (cb?: ((event: AnimationEvent) => void) | void) => {
             const { current: container } = containerRef;
             const removeModal = () => {
                 onClose?.();
@@ -88,7 +114,37 @@ function Modal({
                         {headerChildren}
                     </header>
                 )}
-                <div className={cx("__children")}>{children}</div>
+                <main className={cx("__children")}>{children}</main>
+                {(confirmText || cancelText) && (
+                    <footer className={cx("__buttons")}>
+                        {cancelText && (
+                            <Button
+                                onClick={() => {
+                                    closeModal();
+                                    onCancel?.();
+                                }}
+                            >
+                                {cancelText}
+                            </Button>
+                        )}
+                        {confirmText && (
+                            <Button
+                                variant="primary"
+                                onClick={() => {
+                                    if (onBeforeClose != null && !onBeforeClose()) {
+                                        return;
+                                    }
+
+                                    const callback = onConfirm?.();
+
+                                    closeModal(callback);
+                                }}
+                            >
+                                {confirmText}
+                            </Button>
+                        )}
+                    </footer>
+                )}
             </section>
         </dialog>,
         document.getElementById(PORTAL_ROOT_ID)!,

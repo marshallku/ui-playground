@@ -19,6 +19,8 @@ export default story;
 export const Default: StoryObj<Omit<ModalProps, "opened">> = {
     args: {
         title: "",
+        confirmText: "",
+        cancelText: "",
     },
     render: function Render(args) {
         const [opened, setOpened] = useState(false);
