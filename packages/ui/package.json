@@ -13,7 +13,7 @@
     "scripts": {
         "test": "vitest run",
         "build": "rollup --config",
-        "postbuild": "cp src/styles/*.css dist && pnpm cleancss -b --batch-suffix '' dist/*.css && node-sass --output-style compressed src/theme/global.scss dist/palette.css",
+        "postbuild": "cp src/styles/*.css dist && cp src/theme/palette.scss dist && pnpm cleancss -b --batch-suffix '' dist/*.css && node-sass --output-style compressed src/theme/global.scss dist/palette.css",
         "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
         "lint": "eslint \"src/**/*.ts*\"",
         "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"

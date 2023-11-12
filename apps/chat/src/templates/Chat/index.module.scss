@@ -12,7 +12,7 @@
         display: flex;
         width: 100%;
         height: $form-height;
-        background-color: var(--palette-background);
+        background-color: color(background);
         z-index: 100;
 
         :first-child {
@@ -33,13 +33,12 @@
         &--mine {
             text-align: right;
 
-            // FIXME: this should be the child of `&__bubble`
             #{$chat}__bubble {
-                background-color: var(--palette-primary-container);
+                background-color: color(primary-container);
 
                 &::after {
                     clip: rect(0, 28px, 10px, 19px);
-                    border-color: var(--palette-primary-container);
+                    border-color: color(primary-container);
                     left: auto;
                     right: -37.3px;
                 }
@@ -55,7 +54,7 @@
             position: relative;
             display: inline-block;
             padding: 4px 8px;
-            background-color: var(--palette-grayscale-200);
+            background-color: color(grayscale, 200);
             border-radius: 4px;
 
             &::after {
@@ -68,11 +67,11 @@
                 height: 25px;
                 clip: rect(0, 41px, 15px, 28px);
                 border-width: 0;
-                border-bottom: 0 solid var(--palette-grayscale-200);
-                border-left: 20px solid var(--palette-grayscale-200);
+                border-bottom: 0 solid color(grayscale, 200);
+                border-left: 20px solid color(grayscale, 200);
                 border-radius: 50%;
-                border-right: 20px solid var(--palette-grayscale-200);
-                border-top: 0 solid var(--palette-grayscale-200);
+                border-right: 20px solid color(grayscale, 200);
+                border-top: 0 solid color(grayscale, 200);
                 box-sizing: content-box;
                 z-index: 1;
             }

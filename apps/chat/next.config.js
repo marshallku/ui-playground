@@ -8,6 +8,9 @@ const nextConfig = {
     experimental: {
         outputFileTracingRoot: path.join(__dirname, "../../"),
     },
+    sassOptions: {
+        prependData: '@import "@marshallku/ui/dist/palette.scss";',
+    },
 };
 
 module.exports = nextConfig;
