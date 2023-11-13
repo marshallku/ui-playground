@@ -1,6 +1,4 @@
-import { classNames } from "@marshallku/utils";
 import icons from "./constants";
-import styles from "./index.module.scss";
 
 export interface IconProps {
     /** 아이콘 이름 */
@@ -11,10 +9,8 @@ export interface IconProps {
     className?: string;
 }
 
-const cx = classNames(styles, "icon");
+const cx = (...args: unknown[]) => args.filter((x) => Boolean(x)).join(" ");
 
-function Icon({ name, size: fontSize, className }: IconProps) {
+export function Icon({ name, size: fontSize, className }: IconProps) {
     return <i className={cx("", `-${name}`, { className })} style={{ fontSize }} />;
 }
-
-export default Icon;
