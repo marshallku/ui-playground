@@ -58,11 +58,20 @@ function ChatTemplate({ token, userId, userName, chatRoomId }: ChatTemplateProps
             setChatMessages(messages);
             firstMessageId.current = messages[0]._id;
             canFetchPreviousMessages.current = true;
+            setTimeout(() => {
+                requestAnimationFrame(() => {
+                    messageListRef.current?.scrollTo(0, messageListRef.current.scrollHeight);
+                });
+            });
         };
 
         const handleReceiveMessage = (message: ChatMessage) => {
             setChatMessages((prev) => [...prev, message]);
-            messageListRef.current?.scrollTo(0, messageListRef.current.scrollHeight);
+            setTimeout(() => {
+                requestAnimationFrame(() => {
+                    messageListRef.current?.scrollTo(0, messageListRef.current.scrollHeight);
+                });
+            });
         };
 
         const handleGetPreviousMessage = (messages: ChatMessage[]) => {
