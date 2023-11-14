@@ -9,8 +9,8 @@ export interface IconProps {
     className?: string;
 }
 
-const cx = (...args: unknown[]) => args.filter((x) => Boolean(x)).join(" ");
+const cx = (...args: unknown[]) => args.filter(Boolean).join(" ");
 
 export function Icon({ name, size: fontSize, className }: IconProps) {
-    return <i className={cx("", `-${name}`, { className })} style={{ fontSize }} />;
+    return <i className={cx(`icon-${name}`, className)} style={{ fontSize }} />;
 }
