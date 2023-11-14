@@ -1,4 +1,4 @@
-import icons from "./constants";
+import icons from "../constants";
 
 export interface IconProps {
     /** 아이콘 이름 */
