@@ -24,7 +24,7 @@
         "jsdom": "^22.1.0",
         "minify": "^10.3.0",
         "prettier": "^3.0.1",
-        "turbo": "^1.10.13",
+        "turbo": "^1.10.16",
         "typescript": "^5.2.2",
         "vitest": "^0.34.6",
         "vitest-fetch-mock": "^0.2.2"
