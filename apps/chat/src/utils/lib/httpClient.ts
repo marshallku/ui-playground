@@ -1,5 +1,6 @@
 type FetchParameters = Parameters<typeof fetch>;
 type Promiseable<T> = T | Promise<T>;
+export type HTTPClient<R = Response> = ReturnType<typeof httpClient<R>>;
 
 export interface HTTPClientOption<T = Response> extends Omit<NonNullable<FetchParameters[1]>, "body"> {
     baseUrl?: string;

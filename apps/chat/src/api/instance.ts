@@ -1,13 +1,13 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { httpClient } from "#utils";
+import { httpClient, HTTPClient } from "#utils";
 import { cookies } from "next/headers";
 
 /**
  * Redirects if the response status is 401.
  */
-export const request = httpClient({
+export const request: HTTPClient<unknown> = httpClient({
     baseUrl: process.env.NEXT_PUBLIC_CHAT_SERVER_API_URL,
     headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export const request = httpClient({
     },
 });
 
-export const simpleRequest = httpClient({
+export const simpleRequest: HTTPClient = httpClient({
     baseUrl: process.env.NEXT_PUBLIC_CHAT_SERVER_API_URL,
     headers: {
         "Content-Type": "application/json",

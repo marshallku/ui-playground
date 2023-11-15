@@ -1,7 +1,7 @@
 import { User, request } from "#api";
 import { HomeTemplate } from "#templates";
 
-async function getUsers(): Promise<User[]> {
+async function getUsers() {
     return request<User[]>("/user/list");
 }
 
