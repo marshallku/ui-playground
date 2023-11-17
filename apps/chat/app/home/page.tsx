@@ -1,7 +1,7 @@
 import { User, request } from "#api";
 import { HomeTemplate } from "#templates";
 
-async function getUsers() {
+function getUsers() {
     return request<User[]>("/user/list");
 }
 

@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { classNames } from "@marshallku/utils";
+import { AuthStatusResponse, request } from "#api";
 import { ChatTemplate } from "#templates";
 import styles from "./page.module.scss";
 
@@ -13,15 +14,7 @@ async function getUserInfo() {
         redirect("/");
     }
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_CHAT_SERVER_API_URL}/auth/status`, {
-        headers: {
-            "Content-Type": "application/json",
-            Cookie: cookies().toString(),
-        },
-        credentials: "include",
-        cache: "no-store",
-    });
-    const data = await response.json();
+    const data = await request<AuthStatusResponse>("/auth/status");
 
     return { token, userName: data.username, userId: data.sub };
 }

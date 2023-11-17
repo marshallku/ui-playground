@@ -1,19 +1,8 @@
-import { cookies } from "next/headers";
-import { ChatRoom } from "#api";
+import { ChatRoom, request } from "#api";
 import { ChatRoomList } from "#templates";
 
-async function getChatRoomList(): Promise<ChatRoom[]> {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_CHAT_SERVER_API_URL}/room/list`, {
-        headers: {
-            "Content-Type": "application/json",
-            Cookie: cookies().toString(),
-        },
-        credentials: "include",
-        cache: "no-store",
-    });
-    const data = await response.json();
-
-    return data;
+function getChatRoomList(): Promise<ChatRoom[]> {
+    return request<ChatRoom[]>("/room/list");
 }
 
 export default async function List() {
