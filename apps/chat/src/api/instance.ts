@@ -15,7 +15,7 @@ export const request: HTTPClient<unknown> = httpClient({
     credentials: "include",
     cache: "no-store",
     interceptors: {
-        request(init) {
+        request(_, init) {
             init.headers = {
                 ...init.headers,
                 Cookie: cookies().toString(),
@@ -46,7 +46,7 @@ export const simpleRequest: HTTPClient = httpClient({
     credentials: "include",
     cache: "no-store",
     interceptors: {
-        request(init) {
+        request(_, init) {
             init.headers = {
                 ...init.headers,
                 Cookie: cookies().toString(),

@@ -5,7 +5,10 @@ export type HTTPClient<R = Response> = ReturnType<typeof httpClient<R>>;
 export interface HTTPClientOption<T = Response> extends Omit<NonNullable<FetchParameters[1]>, "body"> {
     baseUrl?: string;
     interceptors?: {
-        request?(init: NonNullable<FetchParameters[1]>): Promiseable<FetchParameters[1]>;
+        request?(
+            input: NonNullable<FetchParameters[0]>,
+            init: NonNullable<FetchParameters[1]>,
+        ): Promiseable<FetchParameters[1]>;
         response?(response: Response): Promiseable<T>;
     };
 }
@@ -31,9 +34,10 @@ export default function httpClient<T = Response>({
         input: FetchParameters[0],
         init?: FetchParameters[1],
     ): Promise<R> {
+        const url = applyBaseUrl(input, baseUrl);
         const option = { ...requestInit, ...init };
-        const interceptorAppliedOption = interceptors.request ? await interceptors.request(option) : option;
-        const response = await fetch(applyBaseUrl(input, baseUrl), interceptorAppliedOption);
+        const interceptorAppliedOption = interceptors.request ? await interceptors.request(url, option) : option;
+        const response = await fetch(url, interceptorAppliedOption);
 
         if (interceptors.response) {
             return (await interceptors.response(response)) as R;
