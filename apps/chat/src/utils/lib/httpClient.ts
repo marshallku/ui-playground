@@ -15,16 +15,11 @@ const applyBaseUrl = (input: FetchParameters[0], baseUrl?: string) => {
         return input;
     }
 
-    if (typeof input === "object") {
-        if ("url" in input) {
-            return new URL(input.url, baseUrl);
-        }
-
-        return new URL(input, baseUrl);
+    if (typeof input === "object" && "url" in input) {
+        return new URL(input.url, baseUrl);
     }
 
-    const url = new URL(input, baseUrl);
-    return url.toString();
+    return new URL(input, baseUrl);
 };
 
 export default function httpClient<T = Response>({
