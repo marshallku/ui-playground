@@ -2,7 +2,16 @@
 
 import { redirect } from "next/navigation";
 import { httpClient, HTTPClient } from "#utils";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
+
+const initializeHeaders = (initHeaders?: RequestInit["headers"]) => ({
+    "User-Agent": headers().get("User-Agent") ?? "",
+    "x-forwarded-for": headers().get("x-forwarded-for") ?? "",
+    "x-real-ip": headers().get("x-real-ip") ?? "",
+    referer: headers().get("referer") ?? "",
+    Cookie: cookies().toString(),
+    ...initHeaders,
+});
 
 /**
  * Redirects if the response status is 401.
@@ -16,10 +25,7 @@ export const request: HTTPClient<unknown> = httpClient({
     cache: "no-store",
     interceptors: {
         request(_, init) {
-            init.headers = {
-                ...init.headers,
-                Cookie: cookies().toString(),
-            };
+            init.headers = initializeHeaders(init.headers);
             return init;
         },
         async response(response) {
@@ -47,10 +53,7 @@ export const simpleRequest: HTTPClient = httpClient({
     cache: "no-store",
     interceptors: {
         request(_, init) {
-            init.headers = {
-                ...init.headers,
-                Cookie: cookies().toString(),
-            };
+            init.headers = initializeHeaders(init.headers);
             return init;
         },
     },
