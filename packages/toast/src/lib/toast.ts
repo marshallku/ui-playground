@@ -58,7 +58,3 @@ export default function toast(
         });
     });
 }
-
-document.getElementById("header")?.addEventListener("click", () => {
-    toast(`It's ${Math.floor(performance.now())}`, { removable: true });
-});
