@@ -1,0 +1,30 @@
+{
+    "name": "@marshallku/react-error-boundary",
+    "version": "0.0.0",
+    "sideEffects": false,
+    "type": "module",
+    "license": "MIT",
+    "main": "dist/index.cjs",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/**"
+    ],
+    "scripts": {
+        "build": "tsup src/index.ts --format esm --dts --external react --minify --clean"
+    },
+    "devDependencies": {
+        "@marshallku/tsconfig": "workspace:^",
+        "@types/react": "^18.2.37",
+        "@types/react-dom": "^18.2.15",
+        "eslint-config-marshallku": "workspace:^",
+        "react-dom": "^18.2.0",
+        "tsup": "^7.2.0"
+    },
+    "peerDependencies": {
+        "react": "^18.2.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
