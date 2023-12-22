@@ -1,4 +1,8 @@
+/* eslint-disable turbo/no-undeclared-env-vars */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
+
+const analyzing = process.env.ANALYZE === "true";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -13,4 +17,11 @@ const nextConfig = {
     },
 };
 
-module.exports = nextConfig;
+if (analyzing) {
+    const withBundleAnalyzer = require("@next/bundle-analyzer")({
+        enabled: true,
+    });
+    module.exports = withBundleAnalyzer(nextConfig);
+} else {
+    module.exports = nextConfig;
+}
