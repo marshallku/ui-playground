@@ -13,68 +13,24 @@ jobs:
         name: Check quality with ESLint
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
-              with:
-                  node-version: 20
-                  check-latest: true
-                  registry-url: https://registry.npmjs.org/
-            - name: Install pnpm
-              uses: pnpm/action-setup@v2
-              with:
-                  version: 8
-                  run_install: false
-            - name: Get pnpm store directory
-              id: pnpm-cache
-              shell: bash
-              run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-            - uses: actions/cache@v3
-              name: Setup pnpm cache
-              with:
-                  path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-                  restore-keys: |
-                      ${{ runner.os }}-pnpm-store-
-            - name: Install dependencies
-              run: pnpm install --frozen-lockfile --strict-peer-dependencies
+            - uses: actions/checkout@v4
+            - uses: marshallku/actions/setup-pnpm@master
             - name: Check code quality
               run: pnpm lint
     build-all:
         name: Build all packages and apps
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
-              with:
-                  node-version: 20
-                  check-latest: true
-                  registry-url: https://registry.npmjs.org/
-            - name: Install pnpm
-              uses: pnpm/action-setup@v2
-              with:
-                  version: 8
-                  run_install: false
-            - name: Get pnpm store directory
-              id: pnpm-cache
-              shell: bash
-              run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-            - uses: actions/cache@v3
-              name: Setup pnpm cache
-              with:
-                  path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-                  restore-keys: |
-                      ${{ runner.os }}-pnpm-store-
-            - name: Install dependencies
-              run: pnpm install --frozen-lockfile --strict-peer-dependencies
+            - uses: actions/checkout@v4
+            - uses: marshallku/actions/setup-pnpm@master
             - name: Build apps and packages
               run: pnpm build
     send-notification:
         needs: [lint-all, build-all]
         if: ${{ failure() }}
-        uses: marshallku/ui-playground/.github/workflows/send_notification.yml@master
+        uses: marshallku/actions/.github/workflows/send-notification.yml@master
         with:
-            status: ${{ contains(join(needs.*.result, ','), 'failure') }}
+            failed: ${{ contains(join(needs.*.result, ','), 'failure') }}
             message: "CI job failed - push on master"
         secrets:
             url: ${{ secrets.DISCORD_WEBHOOK_URI }}
