@@ -1,3 +1,5 @@
+"use server";
+
 import Link from "next/link";
 import { getHomeData } from "#api/home";
 
