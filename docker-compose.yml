@@ -11,6 +11,16 @@ services:
             - 32343:3000
         networks:
             - app_network
+    blog-poc:
+        container_name: blog-poc
+        build:
+            context: .
+            dockerfile: ./apps/blog/Dockerfile
+        restart: unless-stopped
+        ports:
+            - 32344:3000
+        networks:
+            - app_network
 
 # Define a network, which allows containers to communicate
 # with each other, by using their container name as a hostname
