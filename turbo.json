@@ -16,7 +16,7 @@
             "cache": false,
             "persistent": true,
             "dotEnv": [".env", ".env.local"],
-            "env": ["NEXT_PUBLIC_CHAT_SERVER_API_URL"]
+            "env": ["NEXT_PUBLIC_CHAT_SERVER_API_URL", "NEXT_PUBLIC_BLOG_ORIGIN"]
         },
         "clean": {
             "cache": false
